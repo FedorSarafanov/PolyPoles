@@ -1,0 +1,84 @@
+\input{text/diss}
+
+\begin{document}
+
+\def\labauthors{Понур К.А., Сарафанов Ф.Г., Сидоров Д.А.}
+\def\labgroup{420}
+\def\labnumber{210}
+\def\labtheme{Исследование линейных двухполюсников и четырёхполюсников}
+\renewcommand{\vec}{\mathbf}
+\input{text/titlepage}
+
+\tableofcontents
+\newpage
+\section{Первая схема}
+\begin{center}
+	\input{chem1}
+\end{center}
+
+Рассчитаем импеданс данной схемы методом комплексных амплитуд.
+\begin{equation}
+	\hat{U}=U_0 e^{i(\omega t+\phi_U)}
+\end{equation}
+Величину $\hat{U_0}=U_0e^{i\phi_U}$ будем называть комплексной амплитудой напряжения
+\begin{equation}
+	I=C\diff{U}{t}
+\end{equation}
+Отсюда получаем:
+\begin{equation}
+	\hat{I}=U_0\,\omega i C\exp(i\omega t+\phi_U)
+\end{equation}
+И комплексная амплитуда тока:
+\begin{equation}
+	\hat{I_0}=U_0i\omega C e^{i\phi_U}
+\end{equation}
+Получаем комплексный импеданс схемы
+\begin{equation}
+	\hat{z}=\frac{\hat{U_0}}{\hat{I_0}}=\frac{U_0e^{i\phi_U}}{U_0i\omega C e^{i\phi_U}}=\frac{1}{i\cdot\omega C}
+\end{equation}
+
+\begin{equation}
+	z=\frac{1}{\omega C}
+\end{equation}
+\section{Вторая схема}
+\begin{center}
+\input{chem2}
+\end{center}
+
+\begin{equation}
+	\hat{I}=I_0e^{i(\omega t+\phi_I)}
+\end{equation}
+\begin{equation}
+	U=L\diff{I}{t}
+\end{equation}
+\begin{equation}
+	\hat{U}=I_0i\omega L e^{i(\omega t +\phi_I)}
+\end{equation}
+Отсюда
+\begin{equation}
+	\hat{z}=i\omega L
+	\end{equation}
+
+
+
+\section{Третья схема}
+\begin{center}
+\input{chem3}
+\end{center}
+Сначала расчитаем импеданс параллельно соединенных конденсатора и резистора $R_2$
+\begin{equation}
+	\frac{1}{\hat{z_1}}=\frac{1}{R_2}+i\omega C
+	\end{equation}
+	\begin{equation}
+		\hat{z}=\frac{R_2}{1+i \omega CR_2}
+	\end{equation}
+	Комплексный импеданс всей схемы будет равен:
+	\begin{equation}
+		\hat{z_0}=\hat{z_1}+R_1=\frac{R_2}{1+i \omega CR_2}+R_1
+	\end{equation}
+
+
+\section{Четвертая схема}
+	\end{document}
+
+

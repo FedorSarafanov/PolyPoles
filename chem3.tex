@@ -1,0 +1,20 @@
+\documentclass[border=1pt]{standalone}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+
+\begin{document}
+	
+      \begin{circuitikz}[]
+
+            \draw (0,0) to (2,0)
+            to [R=$R_1$] (2,-2) 
+            to (1.5,-2)
+            to [capacitor,C] (1.5,-4)
+            to (2,-4)
+            to (2,-5)
+            to (0,-5);       
+            \draw (2,-2) 
+            to (2.5,-2) 
+            to [R=$R_2$] (2.5,-4)
+            to (2,-4);
+	\end{circuitikz}
+\end{document}
