@@ -4,7 +4,7 @@
 \begin{document}
 	
       \begin{circuitikz}[]
-
+      \ctikzset {label/align = straight }
             \draw (0,0) to [short,o-](0,3)
             to (3,3)
             to (3,2);
@@ -13,10 +13,10 @@
             to (3,-3);
 
 
-            \draw (3,2) to [capacitor,C=$C_1$](0.5,-0.5) %левая ветка
-            to [R=$R_1$](3,-3);
-            \draw (3,2) to [R=$R_2$] (5.5,-0.5) %правая ветка
-            to [capacitor,C=$C_2$](3,-3);
+            \draw (3,2) to [capacitor,l_=$C_1$](0.5,-0.5) %левая ветка
+            to [R,l_=$R_1$](3,-3);
+            \draw (3,2) to [R, l^=$R_2$] (5.5,-0.5) %правая ветка
+            to [capacitor,l^=$C_2$](3,-3);
             \draw (0.5,-0.5) to [short,-o] (2,-0.5);
             \draw   (5.5,-0.5) to [short,-o](4,-0.5);
             	\end{circuitikz}
