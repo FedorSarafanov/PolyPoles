@@ -19,6 +19,7 @@
 			% ymin=0,
 			% ymax=5,
 			xlabel={$\nu$, Гц},
+			% xlabel={$\omega$},
 			ylabel={$\phi$, рад},
 			tick style={very thick},
 		    % scale=0.5,
@@ -68,13 +69,33 @@
 		        sqrt(0.1^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^2)+(0.1^2*\thisrow{b}^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^4)))
 		        }
 		    },		
+		    create on use/w/.style={
+		        create col/expr={
+		        \thisrow{Fr}/(2*3.1415)
+		        }
+		    },				    
 			x=Fr, 
 			y=phi, 
 			y error=diff
 		] 
 		{../data/chem3.tsv};
 
+		\addplot +[smooth,mark=none] plot table 
+		[
+			x=w, 
+			y=phi, 
+			% y error=diff
+		] 
+		{../data/3.tsv};		
 
+
+% R1=13000
+% R2=13000
+% C=0.05*10e-6
+% 0.05*0.000001
+% phi = np.tan(w*13000*13000*0.05*0.000001/(13000+13000+13000*(\x*13000*0.05*0.000001)**2))
+
+	     % \addplot [samples=1000, domain=10:10000, red] {tan((x*13000*13000*1/2000000)/(13000+13000+13000*(x*13000*1/2000000)^2))};
 	        % \addplot +[mark=*, mark size=1.2pt, mark color=red, only marks] plot [error bars/.cd, y dir = both, y explicit] table [x=i, y=d] {../data/11.tsv};
 	        % \addlegendentry{$U_c=-7$ В}
 
@@ -82,7 +103,6 @@
 	     % \addplot [samples=100, domain=0:10, blue] {-0.006137*x+0.0005967};
 	     % \addplot [samples=100, domain=0:10, blue] {-x*0.002315};
 
-	     % \addplot [samples=100, domain=0:10, red] {-x*0.01/1.77};
 	     % \addplot [samples=100, domain=0:10, red] {-x*0.01/1.77};
 	     % \addplot [samples=100, domain=0:10, brown] {-x*0.01/1.33};
 	     % \addplot [samples=100, domain=0:10, black] {-x*0.01/1.14};

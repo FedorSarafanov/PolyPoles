@@ -7,6 +7,9 @@
 \def\labnumber{210}
 \def\labtheme{Исследование линейных двухполюсников и четырёхполюсников}
 \renewcommand{\vec}{\mathbf}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
 \input{text/titlepage}
 
 \tableofcontents
@@ -67,15 +70,30 @@
 \end{center}
 Сначала расчитаем импеданс параллельно соединенных конденсатора и резистора $R_2$
 \begin{equation}
-	\frac{1}{\hat{z_1}}=\frac{1}{R_2}+i\omega C
-	\end{equation}
-	\begin{equation}
-		\hat{z}=\frac{R_2}{1+i \omega CR_2}
-	\end{equation}
-	Комплексный импеданс всей схемы будет равен:
-	\begin{equation}
-		\hat{z_0}=\hat{z_1}+R_1=\frac{R_2}{1+i \omega CR_2}+R_1
-	\end{equation}
+	\frac{1}{\hat{z_0}}=\frac{1}{R_2}+i\omega C
+\end{equation}
+\begin{equation}
+	\hat{z_0}=\frac{R_2}{1+i \omega CR_2}
+\end{equation}
+Комплексный импеданс всей схемы будет равен:
+\begin{equation}
+	\hat{z}=\hat{z_0}+R_1=\frac{R_2}{1+i \omega R_2C}+R_1=
+	\frac{R_2(1-i \omega R_2C)}{1+(\omega R_2C)^2}+R_1
+\end{equation}
+Отсюда
+\begin{equation}
+	\tan\phi = \frac{\Im\hat{z}}{\Re\hat{z}}=
+	\frac{
+		-\frac{\omega R_2^2C}{1+(\omega R_2C)^2}
+	}{
+		\frac{R_2+R_1+R_1(\omega R_2C)^2}{1+(\omega R_2C)^2}
+	}=
+	\frac{
+		-\omega R_2^2C
+	}{
+		R_2+R_1+R_1(\omega R_2C)^2
+	}	
+\end{equation}
 
 
 \section{Четвертая схема}
