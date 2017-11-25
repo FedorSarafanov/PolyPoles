@@ -9,7 +9,7 @@ R1=13000
 R2=13000
 C=0.05*10e-6
 w=nu*(2*np.pi)
-fi = np.loadtxt('data/chem3.v', delimiter='\t', usecols=(0, 5))
+fi = np.loadtxt('data/chem3.tsv', skiprows=1, delimiter='\t', usecols=(0, 5))
 print(fi)
 phi = np.arctan(w*R2*R2*C/(R1+R2+R1*(w*R2*C)**2))
 data=np.hstack([w,phi])
