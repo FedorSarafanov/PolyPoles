@@ -67,7 +67,12 @@
 		        create col/expr={
 		        sqrt(0.1^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^2)+(0.1^2*\thisrow{b}^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^4)))
 		        }
-		    },		
+		    },	
+		    create on use/omega/.style={
+		        create col/expr={
+		        \thisrow{Fr}*2*3.14
+		        }
+		    },		    	
 			x=Fr, 
 			y=k, 
 			% y error=diff

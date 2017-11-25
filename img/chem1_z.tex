@@ -18,9 +18,8 @@
 			% xmax=11,
 			% ymin=0,
 			% ymax=5,
-			xlabel={$\nu$, Гц},
-			% xlabel={$\omega$},
-			ylabel={$\phi$, рад},
+			xlabel={$\omega$, Гц},
+			ylabel={$z$},
 			tick style={very thick},
 		    % scale=0.5,
 		    grid=both,
@@ -31,7 +30,7 @@
 		     % xmode=log,
 		    xmode=log,ymode=normal,
 		    % xtick distance=1,
-		    ytick distance=0.031415,%0.098171875,
+		    % ytick distance=0.098171875,
 		    % ymax = 1.8,
 		    xmin = 0,
 		    ymin = 0,
@@ -61,50 +60,47 @@
 			% at={(rel axis cs:0,1)},
 			% anchor=north west,draw=none,inner sep=0pt,fill=gray!10}
 		]
-
+	     \xdef\C{5e-8}
+	     \xdef\R{13000}
 		\addplot +[mark=*, mark size=1.5pt, only marks] plot [error bars/.cd, y dir = both, y explicit] table 
 		[
 		    create on use/diff/.style={
 		        create col/expr={
 		        sqrt(0.1^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^2)+(0.1^2*\thisrow{b}^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^4)))
 		        }
-		    },		
-		    create on use/w/.style={
+		    },	
+		    create on use/omega/.style={
 		        create col/expr={
-		        \thisrow{Fr}/(2*3.1415)
+		        \thisrow{Fr}*2*3.14
 		        }
-		    },				    
-			x=Fr, 
-			y=phi, 
-			y error=diff
+		    },	
+		    create on use/z/.style={
+		        create col/expr={
+		        \R*\thisrow{Uin}/\thisrow{Uout}
+		        }
+		    },		
+		    create on use/dz/.style={
+		        create col/expr={
+		        (0.001/\thisrow{Uin}+
+		        	0.001/\thisrow{Uout})*\R*\thisrow{Uin}/\thisrow{Uout}
+		        }
+		    },			    	    	    	
+			x=omega, 
+			y=z, 
+			y error=dz
 		] 
-		{../data/chem3.tsv};
-
-		% \addplot +[smooth,mark=none] plot table 
-		% [
-		% 	x=w, 
-		% 	y=phi, 
-		% 	% y error=diff
-		% ] 
-		% {../data/3.tsv};		
+		{../data/chem1.tsv};
 
 
-% R1=13000
-% R2=13000
-% C=0.05*10e-6
-% 0.05*0.000001
-% phi = np.tan(w*13000*13000*0.05*0.000001/(13000+13000+13000*(\x*13000*0.05*0.000001)**2))
-		\xdef\R{13000}
-		\xdef\C{5e-8}
-		% \xdef\L{13000}
-	    \addplot [samples=1000, domain=10:10000, red] {((x*\R*\C)/(2+(x*\R*\C)^2))};
 	        % \addplot +[mark=*, mark size=1.2pt, mark color=red, only marks] plot [error bars/.cd, y dir = both, y explicit] table [x=i, y=d] {../data/11.tsv};
 	        % \addlegendentry{$U_c=-7$ В}
 
 
 	     % \addplot [samples=100, domain=0:10, blue] {-0.006137*x+0.0005967};
-	     % \addplot [samples=100, domain=0:10, blue] {-x*0.002315};
 
+	     \addplot [samples=100, domain=70:3000*6.28, blue] {sqrt(1+(x*\R*\C)^2)/(x*\C)};
+
+	     % \addplot [samples=100, domain=0:10, red] {-x*0.01/1.77};
 	     % \addplot [samples=100, domain=0:10, red] {-x*0.01/1.77};
 	     % \addplot [samples=100, domain=0:10, brown] {-x*0.01/1.33};
 	     % \addplot [samples=100, domain=0:10, black] {-x*0.01/1.14};

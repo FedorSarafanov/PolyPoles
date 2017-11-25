@@ -1,0 +1,96 @@
+%!TEX root=../polypole.tex
+\begin{table}[H]
+	    \caption{Результаты эксперимента для первой схемы}
+	    \label{tab:chem1}
+	    \pgfkeys{/pgf/number format/.cd,
+		fixed,  1000 sep={\,}}
+\newlength\Colsep
+\setlength\Colsep{10pt}
+% \xdef\Table{data/i.tsv}
+	     \xdef\C{5e-8}
+\xdef\R{13000}  
+\pgfplotstableset{
+	% multicolumn names, % allows to have multicolumn names
+	% header=has colnames,
+	dec sep align,
+	col sep=tab, % the seperator in our .csv file
+	fixed zerofill, 
+	precision=4,
+    create on use/omega/.style={
+        create col/expr={
+        \thisrow{Fr}*2*3.14
+        }
+    },	 
+    create on use/z/.style={
+        create col/expr={
+        13000*\thisrow{Uin}/\thisrow{Uout}
+        }
+    },				
+	columns/z/.style={
+		column name={$z$, Ом},
+		precision=0		
+	},	
+	columns/Fr/.style={
+		column name={$\nu$, Гц},
+		precision=0,		
+	},		
+	columns/omega/.style={
+		column name={$\omega$, Гц},
+		precision=0,		
+	},	
+	columns/a/.style={
+		column name={$a$},
+		precision=1,		
+	},		
+	columns/b/.style={
+		column name={$b$},
+		precision=1,		
+	},					
+	columns/Uin/.style={
+		column name={$U_{in}$, В},
+		precision=3,		
+		% column type/.add={|}{},
+	},
+	columns/Uout/.style={
+		column name={$U_{in}$, В},
+		precision=3,				
+		% column type/.add={|}{},
+	},
+	columns/phi/.style={
+		column name={$\phi$, рад},
+		precision=2,				
+		% column type/.add={|}{},
+	},
+	columns/dphi/.style={
+		column name={$\Delta\phi$, рад},
+		precision=2,				
+		% column type/.add={|}{},
+	},	
+	columns/tanphi/.style={
+		column name={$\tan\phi$},
+		precision=3,				
+		% column type/.add={|}{},
+	},		
+	empty cells with={\textbf{--}},
+	every head row/.style={
+	before row={\toprule},
+	after row={
+		\midrule}
+		},
+	every last row/.style={after row=\bottomrule},
+	every row/.style={after row=\midrule}, 
+	columns={Fr,omega,a,b,phi,tanphi,Uin,Uout,z},		
+	% dec zerofill
+	% fixed,fixed zerofill,
+	% precision=3
+	% every even column/.style={
+	% 	% column type/.add={>{\columncolor[gray]{.8}}}{}
+	% },
+	% every even row/.style={
+	% 	before row={\rowcolor[gray]{0.95}}
+	% },	
+	}
+	\centering
+	\pgfplotstabletypeset[]{data/chem1.tsv}
+
+\end{table}

@@ -14,12 +14,12 @@
 
 \tableofcontents
 \newpage
-\section{Первая схема}
+\section{Схема №1. Последовательная $RC$ -- цепочка}
 \begin{center}
 	\input{chems/chem1}
 \end{center}
 
-Рассчитаем импеданс данной схемы методом комплексных амплитуд.
+Рассчитаем импеданс конденсатора методом комплексных амплитуд.
 \begin{equation}
 	\hat{U}=U_0 e^{i(\omega t+\phi_U)}
 \end{equation}
@@ -35,14 +35,60 @@
 \begin{equation}
 	\hat{I_0}=U_0i\omega C e^{i\phi_U}
 \end{equation}
-Получаем комплексный импеданс схемы
+Получаем комплексный импеданс конденсатора
 \begin{equation}
-	\hat{z}=\frac{\hat{U_0}}{\hat{I_0}}=\frac{U_0e^{i\phi_U}}{U_0i\omega C e^{i\phi_U}}=\frac{1}{i\cdot\omega C}
+	\hat{z}_C=\frac{\hat{U_0}}{\hat{I_0}}=\frac{U_0e^{i\phi_U}}{U_0i\omega C e^{i\phi_U}}=\frac{1}{i\cdot\omega C}
 \end{equation}
-
+Нетрудно получить, что $\hat{z}_R=R$. Тогда импеданс $RC$ --цепочки
 \begin{equation}
-	z=\frac{1}{\omega C}
+	\hat{z}=\frac{1}{i\cdot\omega C}+R
 \end{equation}
+\begin{equation}
+	z=\sqrt{
+		\frac{1}{\omega^2 C^2}	
+		+R^2
+	}=
+	\sqrt{
+		\frac{1}{\omega^2 C^2}	
+		+\frac{R^2\omega^2 C^2}{\omega^2 C^2}
+	}=\frac{\sqrt{1+(\omega RC)^2}}{\omega C}
+\end{equation}
+Экспериментально можно снимать зависомость $U_{13}\equiv U_\text{вх}$ и $U_{23}\equiv U_\text{вых}$ от частоты. Из закона Ома найдем тогда импеданс цепочки.
+\begin{gather}
+	\hat{J}_{13}=\hat{J}_{23} \quad\Rightarrow\quad
+	\frac{\hat{U}_{13}}{\hat{z}}=\frac{\hat{U}_{23}}{R}
+\end{gather}
+Взяв по модулю получим нужное соотношение
+\begin{equation}
+	z=\frac{U_\text{вх}}{U_\text{вых}}R
+\end{equation}
+Также найдем зависимость разности фаз от частоты:
+\begin{equation}
+	|\tan\phi| = |\frac{\Im\hat{z}}{\Re\hat{z}}|=
+	|\frac{
+		-(\omega C)^{-1}
+	}{
+		R
+	}|=
+	\frac{
+		1
+	}{
+		\omega RC
+	}	
+\end{equation}
+\input{tables/table1_z}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{img/chem1_z}
+	\caption{Зависимость $z(\omega)$ для последовательной $RC$--цепочки}
+	\label{fig:figure1}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{img/chem1_phi} 
+	\caption{Зависимость $\tan\phi(\omega)$ для последовательной $RC$--цепочки}
+	\label{fig:figure1}
+\end{figure}
 \section{Вторая схема}
 \begin{center}
 \input{chems/chem2}
@@ -62,7 +108,18 @@
 	\hat{z}=i\omega L
 	\end{equation}
 
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{img/chem2_z}
+	\caption{Зависимость $z(\omega)$ для последовательной $LC$--цепочки}
+	\label{fig:figure1}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{img/chem2_phi} 
+	\caption{Зависимость $\tan\phi(\omega)$ для последовательной $LC$--цепочки}
+	\label{fig:figure1}
+\end{figure}
 
 \section{Третья схема}
 \begin{center}

@@ -18,8 +18,8 @@
 			% xmax=11,
 			% ymin=0,
 			% ymax=5,
-			xlabel={$\nu$, Гц},
-			ylabel={$\phi$, град},
+			ylabel={$\tan \phi$},
+			xlabel={$\omega$, Гц},
 			tick style={very thick},
 		    % scale=0.5,
 		    grid=both,
@@ -30,17 +30,17 @@
 		     % xmode=log,
 		    xmode=log,ymode=normal,
 		    % xtick distance=1,
-		    ytick distance=0.098171875,
+		    % ytick distance=0.098171875,
 		    % ymax = 1.8,
 		    xmin = 0,
 		    ymin = 0,
-			yticklabel={
-			\pgfmathparse{\tick/0.098171875/32}
-			\pgfmathifisint{\pgfmathresult}{$\pgfmathprintnumber[int detect]{\pgfmathresult}{}$}%
-			{%
-	           {$\pgfmathprintnumber[frac, frac denom=32,frac whole=false]{\pgfmathresult}\pi$}
-			}{}
-			},	
+			% yticklabel={
+			% \pgfmathparse{\tick/0.098171875/32}
+			% \pgfmathifisint{\pgfmathresult}{$\pgfmathprintnumber[int detect]{\pgfmathresult}{}$}%
+			% {%
+	  %          {$\pgfmathprintnumber[frac, frac denom=32,frac whole=false]{\pgfmathresult}\pi$}
+			% }{}
+			% },	
 			% yticklabel={0}			
 			% ytick={1.5707,0.7853,1,2}, 
 			% yticklabels={$\frac{\pi}{2}$,%
@@ -60,17 +60,39 @@
 			% at={(rel axis cs:0,1)},
 			% anchor=north west,draw=none,inner sep=0pt,fill=gray!10}
 		]
-
+	     \xdef\C{5e-8}
+	     \xdef\R{13000}
 		\addplot +[mark=*, mark size=1.5pt, only marks] plot [error bars/.cd, y dir = both, y explicit] table 
 		[
 		    create on use/diff/.style={
 		        create col/expr={
 		        sqrt(0.1^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^2)+(0.1^2*\thisrow{b}^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^4)))
 		        }
+		    },	
+		    create on use/omega/.style={
+		        create col/expr={
+		        \thisrow{Fr}*2*3.14
+		        }
+		    },	
+		    create on use/tg/.style={
+		        create col/expr={
+		        tan(asin(\thisrow{a}/\thisrow{b}))
+		        }
+		    },			    
+		    create on use/z/.style={
+		        create col/expr={
+		        \R*\thisrow{Uin}/\thisrow{Uout}
+		        }
 		    },		
-			x=Fr, 
-			y=phi, 
-			y error=diff
+		    create on use/DP/.style={
+		        create col/expr={
+		        ((0.1/\thisrow{a}+0.1/\thisrow{b})*\thisrow{a}/\thisrow{b})/
+		        	(1-(\thisrow{a}/\thisrow{b})^2)^(3/2)
+		        }
+		    },			    	    	    	
+			x=omega, 
+			y=tg, 
+			y error=DP 
 		] 
 		{../data/chem1.tsv};
 
@@ -80,7 +102,8 @@
 
 
 	     % \addplot [samples=100, domain=0:10, blue] {-0.006137*x+0.0005967};
-	     % \addplot [samples=100, domain=0:10, blue] {-x*0.002315};
+
+	     \addplot [samples=100, domain=70:3000*6.28, blue] {1/(x*\R*\C)};
 
 	     % \addplot [samples=100, domain=0:10, red] {-x*0.01/1.77};
 	     % \addplot [samples=100, domain=0:10, red] {-x*0.01/1.77};
