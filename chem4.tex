@@ -5,13 +5,13 @@
 	
       \begin{circuitikz}[]
 
-            \draw (0,0) to (2,0)
+            \draw  (0,0) to [short,o-] (2,0)
             to [R=$R_1$] (2,-2) 
             to (1.5,-2)
             to [L] (1.5,-4)
             to (2,-4)
             to (2,-5)
-            to (0,-5);       
+            to [short,-o] (0,-5);       
             \draw (2,-2) 
             to (2.5,-2) 
             to [R=$R_2$] (2.5,-4)

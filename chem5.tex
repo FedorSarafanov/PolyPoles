@@ -1,0 +1,23 @@
+\documentclass[border=1pt]{standalone}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+
+\begin{document}
+	
+      \begin{circuitikz}[]
+
+            \draw (0,0) to [short,o-](0,3)
+            to (3,3)
+            to (3,2);
+            \draw (0,-1) to [short,o-](0,-4) 
+            to (3,-4) 
+            to (3,-3);
+
+
+            \draw (3,2) to [capacitor,C=$C_1$](0.5,-0.5) %левая ветка
+            to [R=$R_1$](3,-3);
+            \draw (3,2) to [R=$R_2$] (5.5,-0.5) %правая ветка
+            to [capacitor,C=$C_2$](3,-3);
+            \draw (0.5,-0.5) to [short,-o] (2,-0.5);
+            \draw   (5.5,-0.5) to [short,-o](4,-0.5);
+            	\end{circuitikz}
+\end{document}
