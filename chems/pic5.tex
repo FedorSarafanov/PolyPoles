@@ -1,0 +1,26 @@
+\documentclass[border=1pt]{standalone}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\usepackage{amssymb}
+\begin{document}
+\begin{circuitikz}[]
+	\draw (0,0) coordinate(0) to [short,o-*] (2,0) coordinate (1)
+	to (2,1) 
+	to [R,R=$R$] (4,1)
+	to [L,L=$L$] (6,1)
+	to (6,0) coordinate(2)
+	to [short,*-*](7,0) coordinate(3)
+	to [short,-o](9,0) coordinate (0');
+	\draw (1) to ++ (0,-1)
+	to [R,R=$R$]++ (2,0)
+	to [C=$C$]++ (2,0)
+	to (2)
+	;
+	\draw (3) to [short,*-*,R=$R$] ++ (0,-3)
+	;
+	\draw  (0,-3) to [short,o-o] (9,-3) ;
+	\draw (0,-1.5) node[below] {$U_{in}$};
+	\draw (9,-1.5) node[below] {$U_{out}$};
+	
+
+\end{circuitikz}
+\end{document}
