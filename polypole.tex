@@ -316,7 +316,30 @@
 \input{chems/chem6}
 \end{center}
 
+\section{Схема с рисунка 5}
+\begin{center}
+\input{chems/pic5}
+\end{center}
 
+Сначала рассчитаем импеданс парралельно соединенных RL и RC контуров.
+\begin{equation}
+	\frac{1}{\hat{z_0}}=\frac{1}{\hat{z_1}}+\frac{1}{\hat{z_2}}=\frac{1}{R+i\omega L}+\frac{i\omega C}{iR\omega C+1}
+\end{equation}
+\begin{equation}
+\frac{1}{\hat{z_0}}=\frac{1-\omega^2 CL+i2R\omega C}{R(1-\omega^2 LC)+i\omega(R^2C+L)}
+\end{equation}
+Учитывая то, что $L=\kappa R$ и $C=\frac{\kappa}{R}$ получим
+\begin{equation}
+	\hat{z_0}=\frac{R-\omega^2\kappa L+i\omega R\kappa +i\omega \kappa R}{1-\omega^2\kappa RC+i2\omega\kappa}
+\end{equation}
+Отсюда следует, что
+\begin{equation}
+	\hat{z_0}=R
+\end{equation}
+Получается, что данная цепь ни что иное как потенциометр. 
+\begin{equation}
+	K_U=\frac{R}{R+R}=\frac{1}{2}
+\end{equation}
 	\end{document}
 
 
