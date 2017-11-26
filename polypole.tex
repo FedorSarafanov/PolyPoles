@@ -9,37 +9,108 @@
 \renewcommand{\vec}{\mathbf}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\hat}{\widehat}
 
 \input{text/titlepage}
 
 \tableofcontents
 \newpage
-\section{Схема №1. Последовательная $RC$ -- цепочка}
-\begin{center}
-	\input{chems/chem1}
-\end{center}
 
-Рассчитаем импеданс конденсатора методом комплексных амплитуд.
-\begin{equation}
-	\hat{U}=U_0 e^{i(\omega t+\phi_U)}
-\end{equation}
-Величину $\hat{U_0}=U_0e^{i\phi_U}$ будем называть комплексной амплитудой напряжения
-\begin{equation}
-	I=C\diff{U}{t}
-\end{equation}
-Отсюда получаем:
-\begin{equation}
-	\hat{I}=U_0\,\omega i C\exp(i\omega t+\phi_U)
-\end{equation}
-И комплексная амплитуда тока:
-\begin{equation}
-	\hat{I_0}=U_0i\omega C e^{i\phi_U}
-\end{equation}
-Получаем комплексный импеданс конденсатора
-\begin{equation}
-	\hat{z}_C=\frac{\hat{U_0}}{\hat{I_0}}=\frac{U_0e^{i\phi_U}}{U_0i\omega C e^{i\phi_U}}=\frac{1}{i\cdot\omega C}
-\end{equation}
-Нетрудно получить, что $\hat{z}_R=R$. Тогда импеданс $RC$ --цепочки
+\section{Расчет цепей}
+\subsection{Расчет импеданса некоторых линейных элементов}
+
+	Будем рассчитывать импеданс методом комплексных амплитуд.
+	Полагая известным
+	\begin{equation}
+		\hat{U}=
+		U_0 e^{i(\omega t+\phi_u)}=
+		U_0\exp(i\phi_u)\exp(i\omega t)=
+		\hat{U}_0\exp(i\omega t)
+	\end{equation}
+	где	$\hat{U}_0=U_0\exp(i\phi_u)$ -- комплексная амплитуд напряжения, включающая в себя начальную фазу.
+	
+	Будем предполагать, что мы нашли $\hat{J}=\hat{J}(\hat{U})$, используя связь тока и напряжения:
+	\begin{equation}
+		\hat{J}=\hat{J}_0\exp(i\omega t)
+	\end{equation}	
+
+	Возможен обратный ход -- от известного тока через линейную связь перейти к напряжению.
+
+	Тогда импеданс по определению найдется как
+	\begin{equation}
+		\hat{z}=\frac{\hat{U}_0}{\hat{J}_0}
+	\end{equation}
+\subsubsection{Импеданс конденсатора}
+	Рассчитаем импеданс конденсатора методом комплексных амплитуд.
+	\begin{equation}
+		\hat{J}=C\diff{\hat{U}}{t}
+	\end{equation}
+	Отсюда получаем:
+	\begin{equation}
+		\hat{J}=i\omega C U_0\exp(i\phi_u)\exp(i\omega t)
+	\end{equation}
+	И комплексная амплитуда тока:
+	\begin{equation}
+		\hat{J}_0=i\omega C U_0\exp(i\phi_u)
+	\end{equation}
+	Получаем комплексный импеданс конденсатора
+	\begin{equation}
+		\hat{z}_C=\frac{\hat{U}_0}{\hat{J}_0}=\frac{U_0\exp(i\phi_u)}{U_0i\omega C \exp(i\phi_u)}=\frac{1}{i\cdot\omega C}
+	\end{equation}
+
+\subsubsection{Импеданс индуктивности}	
+
+	В данном случае удобно считать известным ток.
+	\begin{equation}
+		\hat{U}=L\diff{\hat{J}}{t}
+	\end{equation}
+	Отсюда получаем:
+	\begin{equation}
+		\hat{U}=i\omega L J_0\exp(i\phi_j)\exp(i\omega t)
+	\end{equation}
+	И комплексная амплитуда напряжения:
+	\begin{equation}
+		\hat{U}_0=i\omega L J_0\exp(i\phi_j)
+	\end{equation}
+	Получаем комплексный импеданс конденсатора
+	\begin{equation}
+		\hat{z}_L=\frac{\hat{U}_0}{\hat{J}_0}=\frac{i\omega L J_0\exp(i\phi_j)}{J_0\exp(i\phi_j)}=i\cdot \omega L
+	\end{equation}
+
+\subsubsection{Импеданс резистора}	
+
+	Пусть известен ток. 
+	\begin{equation}
+		\hat{U}=\hat{J}R
+	\end{equation}
+	Отсюда получаем:
+	\begin{equation}
+		\hat{U}=R J_0\exp(i\phi_j)\exp(i\omega t)
+	\end{equation}
+	И комплексная амплитуда напряжения:
+	\begin{equation}
+		\hat{U}_0=R J_0\exp(i\phi_j)
+	\end{equation}
+	Получаем комплексный импеданс конденсатора
+	\begin{equation}
+		\hat{z}_R=\frac{\hat{U}_0}{\hat{J}_0}=\frac{R J_0\exp(i\phi_j)}{J_0\exp(i\phi_j)}=R
+	\end{equation}
+
+\section{Двухполюсники. Расчет цепи и экспериментальные данные}
+\subsection{Схема №1. Последовательная $RC$ -- цепочка}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{chems/chem1}
+	\caption{Последовательная $RC$ -- цепочка}
+	\label{fig:figure1}
+\end{figure}
+
+\subsubsection{Импеданс}
+    
+Импеданс $RC$ -- цепочки найдем, используя ранее вычисленные 
+импедансы линейных элементов:
 \begin{equation}
 	\hat{z}=\frac{1}{i\cdot\omega C}+R
 \end{equation}
@@ -58,10 +129,12 @@
 	\hat{J}_{13}=\hat{J}_{23} \quad\Rightarrow\quad
 	\frac{\hat{U}_{13}}{\hat{z}}=\frac{\hat{U}_{23}}{R}
 \end{gather}
-Взяв по модулю получим нужное соотношение
+Взяв по модулю, получим нужное соотношение:
 \begin{equation}
 	z=\frac{U_\text{вх}}{U_\text{вых}}R
 \end{equation}
+
+\subsubsection{Разность фаз}
 Также найдем зависимость разности фаз от частоты:
 \begin{equation}
 	|\tan\phi| = |\frac{\Im\hat{z}}{\Re\hat{z}}|=
@@ -76,6 +149,8 @@
 		\omega RC
 	}	
 \end{equation}
+
+\subsubsection{Результаты эксперимента}
 \input{tables/table1_z}
 \begin{figure}[H]
 	\centering
@@ -89,25 +164,45 @@
 	\caption{Зависимость $\tan\phi(\omega)$ для последовательной $RC$--цепочки}
 	\label{fig:figure1}
 \end{figure}
-\section{Вторая схема}
-\begin{center}
-\input{chems/chem2}
-\end{center}
 
-\begin{equation}
-	\hat{I}=I_0e^{i(\omega t+\phi_I)}
-\end{equation}
-\begin{equation}
-	U=L\diff{I}{t}
-\end{equation}
-\begin{equation}
-	\hat{U}=I_0i\omega L e^{i(\omega t +\phi_I)}
-\end{equation}
-Отсюда
-\begin{equation}
-	\hat{z}=i\omega L
-	\end{equation}
 
+\subsection{Схема №2. Последовательная $LC$ -- цепочка}
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{chems/chem1}
+	\caption{Последовательная $RC$ -- цепочка}
+	\label{fig:figure1}
+\end{figure}
+
+\subsubsection{Импеданс}
+\begin{equation}
+	\hat{z}=i\omega L+R
+\end{equation}
+\begin{equation}
+	z=\sqrt{(\omega L)^2+R}
+\end{equation}
+Очевидно, что аналогично последовательной $RC$--цепочке
+\begin{equation}
+	z=\frac{U_\text{вх}}{U_\text{вых}}R
+\end{equation}
+\subsubsection{Разность фаз}
+\begin{equation}
+	\left|\tan\phi\right| = \left|\frac{\Im\hat{z}}{\Re\hat{z}}\right|=
+	\left|\frac{
+		\omega L
+	}{
+		R
+	}\right|=
+	\frac{
+		\omega L
+	}{
+		R
+	}	
+\end{equation}
+
+\subsubsection{Результаты эксперимента}
+
+\input{tables/table2_z}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.85\textwidth]{img/chem2_z}
@@ -121,52 +216,91 @@
 	\label{fig:figure1}
 \end{figure}
 
-\section{Третья схема}
-\begin{center}
-\input{chems/chem3}
-\end{center}
-Сначала расчитаем импеданс параллельно соединенных конденсатора и резистора $R_2$
+\subsection{Схема №3. Двухполюсник $R[RC]$}
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{chems/chem3}
+	\caption{Двухполюсник $R[RC]$}
+	\label{fig:RRC}
+\end{figure}
+
+\subsubsection{Импеданс}
+Сначала рассчитаем импеданс параллельно соединенных конденсатора и резистора $R$
 \begin{equation}
-	\frac{1}{\hat{z_0}}=\frac{1}{R_2}+i\omega C
+	\frac{1}{\hat{z}_0}=\frac{1}{R}+i\omega C
 \end{equation}
 \begin{equation}
-	\hat{z_0}=\frac{R_2}{1+i \omega CR_2}
+	\hat{z}_0=\frac{R}{1+i \omega CR}
 \end{equation}
 Комплексный импеданс всей схемы будет равен:
 \begin{equation}
-	\hat{z}=\hat{z_0}+R_1=\frac{R_2}{1+i \omega R_2C}+R_1=
-	\frac{R_2(1-i \omega R_2C)}{1+(\omega R_2C)^2}+R_1
+	\hat{z}=\hat{z}_0+R=\frac{R}{1+i \omega RC}+R=
+	\frac{R(1-i \omega RC)}{1+(\omega RC)^2}+R
 \end{equation}
-Отсюда
+\begin{equation}
+	z=\sqrt{\Im^2\hat{z}+\Re^2\hat{z}}=
+	R\sqrt{
+	\left(
+	1+\frac{1}{1+(\omega RC)^2}
+	\right)^2+
+	\left(
+	\frac{\omega C}{1+(\omega RC)^2}
+	\right)^2
+	}
+\end{equation}
+
+\subsubsection{Разность фаз}
 \begin{equation}
 	\tan\phi = \frac{\Im\hat{z}}{\Re\hat{z}}=
 	\frac{
-		-\frac{\omega R_2^2C}{1+(\omega R_2C)^2}
+		-\frac{\omega R^2C}{1+(\omega RC)^2}
 	}{
-		\frac{R_2+R_1+R_1(\omega R_2C)^2}{1+(\omega R_2C)^2}
+		\frac{R+R+R(\omega RC)^2}{1+(\omega RC)^2}
 	}=
 	\frac{
-		-\omega R_2^2C
+		-\omega R^2C
 	}{
-		R_2+R_1+R_1(\omega R_2C)^2
+		R+R+R(\omega RC)^2
+	}=
+	-\frac{
+		\omega RC
+	}{
+		2+(\omega RC)^2
 	}	
 \end{equation}
+Из уравнения видно, что на малых частотах $z\approx 2R$, а при высоких $z\approx R$.
+
+\subsubsection{Результаты эксперимента}
+
+\input{tables/table3_z}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{img/chem3_z}
+	\caption{Зависимость $z(\omega)$ для  $R[RC]$--двухполюсника}
+	\label{fig:figure1}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{img/chem3_phi} 
+	\caption{Зависимость $\tan\phi(\omega)$ для $R[RC]$--двухполюсника}
+	\label{fig:figure1}
+\end{figure}
 
 
-\section{Четвертая схема}
+\subsection{Четвертая схема}
 \begin{center}
 \input{chems/chem4}
 \end{center}
-Рассчитаем импеданс параллельно соединенных катушки и резистора $R_2$
+Рассчитаем импеданс параллельно соединенных катушки и резистора $R$
 \begin{equation}
-	\frac{1}{\hat{z_1}}=\frac{1}{R_2}+\frac{1}{i\omega L}
+	\frac{1}{\hat{z_1}}=\frac{1}{R}+\frac{1}{i\omega L}
 \end{equation}
 \begin{equation}
-	\hat{z_1}=\frac{R_2\omega^2L^2+iR_2^2\omega L}{R_2+\omega L}
+	\hat{z_1}=\frac{R\omega^2L^2+iR^2\omega L}{R+\omega L}
 \end{equation}
 А импеданс всей схемы:
 \begin{equation}
-	\hat{z_0}=\frac{R_2\omega^2L^2}{R_2+\omega L} + R_1+i\frac{iR_2^2\omega L}{R_2+\omega L}
+	\hat{z}_0=\frac{R\omega^2L^2}{R+\omega L} + R+i\frac{iR^2\omega L}{R+\omega L}
 \end{equation}
 
 

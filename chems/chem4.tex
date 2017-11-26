@@ -3,18 +3,26 @@
 
 \begin{document}
 	
-      \begin{circuitikz}[]
+      \begin{circuitikz}
 
-            \draw  (0,0) to [short,o-] (2,0)
-            to [R=$R_1$] (2,-2) 
-            to (1.5,-2)
-            to [L] (1.5,-4)
-            to (2,-4)
-            to (2,-5)
-            to [short,-o] (0,-5);       
-            \draw (2,-2) 
-            to (2.5,-2) 
-            to [R=$R_2$] (2.5,-4)
-            to (2,-4);
+            \ctikzset {label/align = straight }
+            \draw (0,0) coordinate (1) to [short,o-] (0,1)
+            to [R, l^=$R$] ++(3,0) coordinate (1')
+            to [short,-*]  ++(0.5,0) coordinate (I)% ++(3,0)
+            ++(2,0) coordinate (II)
+            to [short,*-]  ++(0.5,0)
+            to [short,-o] ++(0,-1) coordinate (3)
+            ;
+            \draw (1') to[short,-o] ++ (0,-1) coordinate (2);
+            \draw (1) node [below, yshift=-1mm] {3};
+            \draw (2) node [below, yshift=-1mm] {2};
+            \draw (3) node [below, yshift=-1mm] {1};
+
+            \draw (I) -- ++ (0,0.5) 
+            to [R, l^=$R$] ++(2,0)
+            to ++ (0,-0.5);
+            \draw (I) -- ++ (0,-0.5) 
+            to [inductor, l_=$L$] ++(2,0)
+            to ++ (0,0.5);            
 	\end{circuitikz}
 \end{document}
