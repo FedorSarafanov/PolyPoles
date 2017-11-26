@@ -104,7 +104,7 @@
 	\centering
 	\includegraphics[]{chems/chem1}
 	\caption{Последовательная $RC$ -- цепочка}
-	\label{fig:figure1}
+	\label{fig:RC}
 \end{figure}
 
 \subsubsection{Импеданс}
@@ -156,13 +156,13 @@
 	\centering
 	\includegraphics[width=0.85\textwidth]{img/chem1_z}
 	\caption{Зависимость $z(\omega)$ для последовательной $RC$--цепочки}
-	\label{fig:figure1}
+	\label{fig:RC_z}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.85\textwidth]{img/chem1_phi} 
 	\caption{Зависимость $\tan\phi(\omega)$ для последовательной $RC$--цепочки}
-	\label{fig:figure1}
+	\label{fig:RC_tanphi}
 \end{figure}
 
 
@@ -170,8 +170,8 @@
 \begin{figure}[H]
 	\centering
 	\includegraphics[]{chems/chem1}
-	\caption{Последовательная $RC$ -- цепочка}
-	\label{fig:figure1}
+	\caption{Последовательная $LC$ -- цепочка}
+	\label{fig:LC}
 \end{figure}
 
 \subsubsection{Импеданс}
@@ -207,13 +207,13 @@
 	\centering
 	\includegraphics[width=0.85\textwidth]{img/chem2_z}
 	\caption{Зависимость $z(\omega)$ для последовательной $LC$--цепочки}
-	\label{fig:figure1}
+	\label{fig:LC_z}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.85\textwidth]{img/chem2_phi} 
 	\caption{Зависимость $\tan\phi(\omega)$ для последовательной $LC$--цепочки}
-	\label{fig:figure1}
+	\label{fig:LC_tanphi}
 \end{figure}
 
 \subsection{Схема №3. Двухполюсник $R[RC]$}
@@ -277,46 +277,109 @@
 	\centering
 	\includegraphics[width=0.85\textwidth]{img/chem3_z}
 	\caption{Зависимость $z(\omega)$ для  $R[RC]$--двухполюсника}
-	\label{fig:figure1}
+	\label{fig:RRC_z}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.85\textwidth]{img/chem3_phi} 
 	\caption{Зависимость $\tan\phi(\omega)$ для $R[RC]$--двухполюсника}
-	\label{fig:figure1}
+	\label{fig:RRC_tanphi}
 \end{figure}
 
 
-\subsection{Четвертая схема}
-\begin{center}
-\input{chems/chem4}
-\end{center}
+\subsection{Схема №4. Двухполюсник $R[RL]$}
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{chems/chem4}
+	\caption{Двухполюсник $R[RL]$}
+	\label{fig:RRL}
+\end{figure}
+\subsubsection{Импеданс}
 Рассчитаем импеданс параллельно соединенных катушки и резистора $R$
 \begin{equation}
-	\frac{1}{\hat{z_1}}=\frac{1}{R}+\frac{1}{i\omega L}
+	\frac{1}{\hat{z_0}}=\frac{1}{R}+\frac{1}{i\omega L}=\frac{R+i\omega L}{iR\omega L}=\frac{\omega L - iR}{\omega R L}
 \end{equation}
 \begin{equation}
-	\hat{z_1}=\frac{R\omega^2L^2+iR^2\omega L}{R+\omega L}
+	\hat{z_0}=\frac{\omega R L(\omega L + iR)}{(\omega L - iR)(\omega L + iR)}=
+	\frac{\omega^2L^2 R +i\omega L R^2}{\omega^2L^2+R^2}
 \end{equation}
 А импеданс всей схемы:
 \begin{equation}
-	\hat{z}_0=\frac{R\omega^2L^2}{R+\omega L} + R+i\frac{iR^2\omega L}{R+\omega L}
+	\hat{z}=
+	\left(
+	\frac{2\omega^2L^2 R+R^3}{\omega^2L^2+R^2}
+	\right)+
+	i
+	\left(
+	\frac{\omega L R^2}{\omega^2L^2+R^2}
+	\right)
+\end{equation}
+\begin{equation}
+	z=\sqrt{\Im^2\hat{z}+\Re^2\hat{z}}=
+	\frac{1}{\omega^2L^2+R^2}\sqrt{
+	\left(
+	2\omega^2L^2 R+R^3
+	\right)^2+
+	\left(
+	\omega L R^2
+	\right)^2
+	}
+\end{equation}
+При больших частотах можно пренебречь вторым слагаемым под корнем и сопротивлением в суммах, тогда видно, что на таких частотах $z\approx 2R$.
+
+На малых частотах $\omega\approx0$ предел даёт значение импеданса $R$.
+\subsubsection{Разность фаз}
+\begin{equation}
+	\tan\phi = \frac{\Im\hat{z}}{\Re\hat{z}}=
+	\frac{
+		\omega L R^2
+	}{
+		2\omega^2L^2 R+R^3
+	}=
+	\frac{
+		\omega LR
+	}{
+		2\omega^2L^2 +R^2
+	}	
 \end{equation}
 
+\subsubsection{Результаты эксперимента}
 
-\section{Пятая схема}
-\begin{center}
-\input{chems/chem5}
-\end{center}
+\input{tables/table4_z}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{img/chem4_z}
+	\caption{Зависимость $z(\omega)$ для  $R[RL]$--двухполюсника}
+	\label{fig:RRL_z}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{img/chem4_phi} 
+	\caption{Зависимость $\tan\phi(\omega)$ для $R[RL]$--двухполюсника}
+	\label{fig:RRL_tanphi}
+\end{figure}
+
+
+\section{Четырехполюсники. Расчет цепи и экспериментальные данные}
+
+\subsection{Схема №5. Простейший мостовой фазовращатель}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{chems/chem5}
+	\caption{Принципиальная схема фазовращателя}
+	\label{fig:ph_rot}
+\end{figure}
+
+\subsection{Схема №6. Составной четырехполюсник - фазовращатель}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{chems/chem6}
+	\caption{Принципиальная схема фазовращателя}
+	\label{fig:ph_rot2}
+\end{figure}
 
 
 
-\section{Шестая схема}
-\begin{center}
-\input{chems/chem6}
-\end{center}
-
-
-	\end{document}
-
-
+\end{document}
