@@ -371,6 +371,95 @@
 	\label{fig:ph_rot}
 \end{figure}
 
+Запишем ток через левую ветвь:
+\begin{equation}
+	\hat{J}_{left}\equiv \hat{J}_{R_1}=\frac{\hat{U}_{in}}{R_1+\frac{1}{i\omega C_1}}
+\end{equation}
+Аналогично через правую:
+\begin{equation}
+	\hat{J}_{right}\equiv \hat{J}_{R_2}=\frac{\hat{U}_{in}}{R_2+\frac{1}{i\omega C_2}}
+\end{equation}
+Тогда 
+\begin{equation}
+	\hat{U}_{out}\equiv\hat{U}_{MN}=
+	-\hat{U}_{AM}+\hat{U}_{AN}=
+	-\hat{J}_{left}\cdot\frac{1}{i\omega C_1}
+	+\hat{J}_{right}\cdot R_2
+\end{equation}
+\begin{equation}
+	\hat{U}_{out}=\hat{U}_{in}
+	\left(
+	\frac{R_2}{R_2+(i\omega C_2)^{-1}}-
+	\frac{1}{i\omega C_1}\frac{1}{R_1+(i\omega C_1)^{-1}}
+	\right)
+\end{equation}
+\begin{equation}
+	\hat{K}=\frac{\hat{U}_{out}}{\hat{U}_{in}}=
+	\frac{i\omega C_2 R_2}{i\omega C_2 R_2+1}-
+	\frac{1}{i\omega C_1 R_1+1}
+\end{equation}
+Обозначим $\Omega_1=\omega C_1R_1$, $\Omega_2=\omega C_2R_2$:
+\begin{equation}
+	\hat{K}=\frac{i\Omega_2}{i\Omega_2+1}-\frac{1}{i\Omega_1+1}=
+	\frac{i\Omega_2(1-i\Omega_2)}{\Omega_2^2+1}+\frac{i\Omega_1-1}{\Omega_1^2+1}
+\end{equation}
+\begin{equation}
+	\hat{K}=
+	\left(
+		\frac{\Omega_2^2}{\Omega_2^2+1}-
+		\frac{1}{\Omega_1^2+1}
+	\right)+
+	i\left(
+		\frac{\Omega_2}{\Omega_2^2+1}+
+		\frac{\Omega_1}{\Omega_1^2+1}
+	\right)
+\end{equation}
+Отсюда
+\begin{equation}
+	K=
+	\sqrt{
+	\left(
+		\frac{\Omega_2^2}{\Omega_2^2+1}-
+		\frac{1}{\Omega_1^2+1}
+	\right)^2+
+	\left(
+		\frac{\Omega_2}{\Omega_2^2+1}+
+		\frac{\Omega_1}{\Omega_1^2+1}
+	\right)^2
+	}
+\end{equation}
+При $\Omega_1$=$\Omega_2$ подстановка дает $K\equiv 1$.
+
+\begin{equation}
+	\tan\phi=\left(
+		\frac{\Omega_2}{\Omega_2^2+1}+
+		\frac{\Omega_1}{\Omega_1^2+1}
+	\right)
+	\cdot
+	\left(
+		\frac{\Omega_2^2}{\Omega_2^2+1}-
+		\frac{1}{\Omega_1^2+1}
+	\right)^{-1}
+\end{equation}
+При $\Omega_1$=$\Omega_2 \equiv \Omega$
+\begin{equation}
+	\tan\phi=\frac{2\Omega}{1-\Omega^2}
+\end{equation}
+Можно заметить, что это формула тангенса половинного угла:
+\begin{equation}
+	\tan\phi=\frac{2\tan\frac{\phi}{2}}{1-\tan^2\frac{\phi}{2}}
+\end{equation}
+
+Отсюда
+\begin{equation}
+	\tan\frac{\phi}{2}=\Omega = \omega RC
+\end{equation}
+
+Так как $\arctan\Omega$ может принимать значения только от 0 до $\frac{\pi}2$, то 
+\begin{equation}
+	0\leq\phi<\pi
+\end{equation}
+
 \subsection{Схема №6. Составной четырехполюсник - фазовращатель}
 
 \begin{figure}[H]
@@ -380,6 +469,142 @@
 	\label{fig:ph_rot2}
 \end{figure}
 
+\begin{equation}
+	z=\frac{1}{i\omega C}+
+	\cfrac{1}{
+		\cfrac{1}{R}+
+		\cfrac{1}{
+			\cfrac{1}{i\omega C}+
+			\cfrac{1}{
+				\frac{1}{R}+
+					\cfrac{1}{
+						R+
+						\cfrac{1}{
+							i\omega C				
+						}
+					}
+				}
+			}		
+			}=
+\frac{1}{i\omega C}+
+	\cfrac{1}{
+		\cfrac{1}{R}+
+		\cfrac{1}{
+			\cfrac{1}{i\omega C}+
+			\cfrac{1}{
+				\frac{1}{R}+
+					\cfrac{i\omega C}{i\Omega+1}
+				}
+			}		
+			}
+\end{equation}
+\begin{gather}
+=
+\frac{1}{i\omega C}+
+	\cfrac{1}{
+		\cfrac{1}{R}+
+		\cfrac{1}{
+			\cfrac{1}{i\omega C}+
+			\cfrac{R(i\Omega+1)}{2i\Omega+1}	
+		}	
+	}
+=\\=
+\frac{1}{i\omega C}+
+	\cfrac{1}{
+		\cfrac{1}{R}+		
+			\cfrac{i\omega C - 2\Omega \omega C}{3i\Omega-\Omega^2}
+	}
+=\\=
+\frac{1}{i\omega C}+
+	\cfrac{1}{
+		\cfrac{3i\Omega-\Omega^2}{...}+		
+			\cfrac{i\Omega - 2\Omega^2}{R(3i\Omega-\Omega^2)}
+	}
+=\\=
+\frac{1}{i\omega C}+
+\cfrac{R(3i\Omega-\Omega^2)}{4i\Omega - 3\Omega^2}
+=\\=
+\frac{4i\Omega - 3\Omega^2}{...}+
+\cfrac{i\Omega(3i\Omega-\Omega^2)}{-4\Omega\omega C - 3i\Omega^2\omega C}
+=\\=
+\frac{4i\Omega - 3\Omega^2}{...}+
+\cfrac{-3\Omega^2-i\Omega^3}{-4\Omega\omega C - 3i\Omega^2\omega C}
+=\\=
+R\frac{
+	i\Omega^3
+	+6\Omega^2
+	-4i\Omega 
+}{
+	4\Omega^2 
+	+3i\Omega^3
+}
+=\\=
+R\frac{
+	(i\Omega^3
+	+6\Omega^2
+	-4i\Omega )
+	(
+		4\Omega^2 
+		-3i\Omega^3	
+	)
+}{
+	16\Omega^4
+	+9\Omega^6
+}
+=R\frac{
+	-16 i \Omega^3 + 12 \Omega^4 - 14 i \Omega^5 + 3 \Omega^6
+}{
+	16\Omega^4
+	+9\Omega^6
+}
+=\\=
+\left(
+R
+	\frac{
+		12 \Omega^4 + 3 \Omega^6
+	}{
+		16\Omega^4
+		+9\Omega^6
+	}
+\right)
+-i
+\left(
+	R\frac{
+		16 \Omega^3 + 14 \Omega^5
+	}{
+		16\Omega^4
+		+9\Omega^6
+	}
+\right)
+\end{gather}
 
+Будем рассматривать данный четырехполюсник как составной из трех следующего вида:
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{chems/chem6_one}
+	\caption{Простой четырехполюсник}
+	\label{fig:ph_rot2_one}
+\end{figure}
+
+Здесь найдем $\hat{K}_1$.
+\begin{equation}
+	\hat{U}_{out}\equiv\hat{U}_R=\hat{J}\cdot R=
+	\frac{\hat{U}_{in}}{\hat{z}}R
+\end{equation}
+\begin{equation}
+	\hat{K}_1=\frac{R}{\hat{z}}=\frac{R}{R+1/(i\omega C)}=\frac{i\Omega}{1+i\Omega}=
+	\frac{\Omega^2}{1+\Omega^2}+i\frac{\Omega}{1+\Omega^2}
+\end{equation}
+Здесь
+\begin{equation}
+	K_1=\frac{\Omega}{\sqrt{1+\Omega^2}}
+\end{equation}
+\begin{equation}
+	\tan\phi=\frac{1}{\Omega}
+\end{equation}
+Очевидно, что при соединении трех таких четырехполюсников 
+\begin{equation}
+	\hat{K}=\hat{K}_1^3=K_1^3\exp(3i\phi_1)
+\end{equation}
 
 \end{document}

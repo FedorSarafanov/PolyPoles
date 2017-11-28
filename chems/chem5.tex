@@ -2,22 +2,33 @@
 \usepackage[europeanresistors,americaninductors]{circuitikz}
 
 \begin{document}
-	
-      \begin{circuitikz}[]
-      \ctikzset {label/align = straight }
-            \draw (0,0) to [short,o-](0,3)
-            to (3,3)
-            to (3,2);
-            \draw (0,-1) to [short,o-](0,-4) 
-            to (3,-4) 
-            to (3,-3);
+
+\begin{circuitikz}[]
+	\ctikzset {label/align = straight }
+	\draw (-0.5,0.5) coordinate (in1) to [short,o-] (-0.5,3)
+	to (3,3)
+	to[short,-*] (3,2) coordinate (A);
+	\draw (-0.5,-1.5) coordinate (in2) to [short,o-] (-0.5,-4)
+	to (3,-4)
+	to[short,-*] (3,-3) coordinate (B);
 
 
-            \draw (3,2) to [capacitor,l_=$C_1$](0.5,-0.5) %левая ветка
-            to [R,l_=$R_1$](3,-3);
-            \draw (3,2) to [R, l^=$R_2$] (5.5,-0.5) %правая ветка
-            to [capacitor,l^=$C_2$](3,-3);
-            \draw (0.5,-0.5) to [short,-o] (2,-0.5);
-            \draw   (5.5,-0.5) to [short,-o](4,-0.5);
-            	\end{circuitikz}
+
+	\draw (3,2) to [capacitor,l_=$C_1$](0.5,-0.5) %левая ветка
+	to  [R,l_=$R_1$](3,-3);
+	\draw (3,2) to [R, l^=$R_2$] (5.5,-0.5) %правая ветка
+	to [capacitor,l^=$C_2$](3,-3);
+
+	\draw (0.5,-0.5) coordinate (M) to [short,*-o] (2,-0.5) coordinate (out1);
+	\draw  (5.5,-0.5) coordinate (N) to [short,*-o](4,-0.5) coordinate (out2);
+
+	\path (in1) -- node[]{$U_{in}$} (in2);
+	\path (out1) -- node[]{$U_{out}$} (out2);
+
+      \draw (A) node [below, yshift=-0.6em] {A};
+      \draw (B) node [above, yshift=0.6em] {B};
+      \draw (M) node [left] {M};
+      \draw (N) node [right] {N};
+
+\end{circuitikz}
 \end{document}
