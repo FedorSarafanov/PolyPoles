@@ -735,4 +735,88 @@ R
 \begin{equation}
 	K_U=\frac{R}{R+R}=\frac{1}{2}
 \end{equation}
+
+\section{Схема с рисунка 6}
+\begin{center}
+\input{chems/pic6}
+\end{center}
+Перейдём к эквивалентной схеме:
+\begin{center}
+\input{chems/pic6a}
+\end{center}
+
+$U_{out}=U_{2R}+U_{2C}$
+
+
+$U_{2R}=(J_3-J_2)\cdot 2R$
+
+
+$U_{2C}=J_3\cdot\frac{1}{2i\omega C}$  
+
+Все величины подразумеваются комплексными.
+
+ Методом контурных токов составим систему уравнений:
+\begin{gather}
+	\left\{
+	\begin{aligned}
+		J_1\cdot\left(\frac{1}{i\omega C}+R\right)+J_2\cdot\left( -\frac{1}{i\omega C} \right)+J_3\cdot\left(R \right)=U_{in}\\
+		J_1\cdot\left(-\frac{1}{i\omega C}\right)+J_2\cdot\left(4R+\frac{2}{i\omega C} \right)+J_3\cdot\left(-2R-\frac{1}{i\omega C} \right)=0\\
+		J_1\cdot\left(-R\right)+J_2\cdot\left( -2R-\frac{1}{i\omega C} \right)+J_3\cdot\left(\frac{3}{2i\omega C}+3R \right)=0
+	\end{aligned}
+	\right.
+\end{gather}
+Решим её методом Краммера:
+\begin{equation}
+	\Delta =\begin{vmatrix} 
+		R+\frac{1}{i\omega C} & -\frac{1}{i\omega C} & -R\\
+		-\frac{1}{i\omega C} & 4R+\frac{2}{i\omega C} & -2R-\frac{1}{i\omega C}\\
+		-R & -\frac{1}{i\omega C}-2R & 3R+\frac{3}{2i\omega C}\
+	\end{vmatrix}=
+\frac{(2i\omega CR+1)[4(i\omega CR)^2+8(i\omega CR)+1]}{2(i\omega C)^3}
+\end{equation}
+\begin{equation}
+	\Delta_{J_3} =\begin{vmatrix} 
+		R+\frac{1}{i\omega C} & -\frac{1}{i\omega C} & U_{in}\\
+		-\frac{1}{i\omega C} & 4R+\frac{2}{i\omega C} & 0\\
+		-R & -\frac{1}{i\omega C}-2R & 0\
+	\end{vmatrix}=
+	\frac{U_{in}(2i\omega CR+1)^2}{(i\omega C)^2}	
+\end{equation}
+\begin{equation}
+	\Delta_{J_2} =\begin{vmatrix} 
+		R+\frac{1}{i\omega C} & U_{in} & -R\\
+		-\frac{1}{i\omega C} & 0 & -2R-\frac{1}{i\omega C}\\
+		-R & 0 & 3R+\frac{3}{2i\omega C}\
+	\end{vmatrix}=
+		\frac{U_{in}(2i\omega CR+1)(2i\omega CR+3)}{(i\omega C)^2}	
+\end{equation}
+Отсюда мы сможем найти $J_2$ и $J_3$:
+\begin{equation}
+	J_3=2iU_{in}C\omega\frac{2i\omega CR+1}{4(i\omega CR)^2+8i\omega CR+1}=U_{in}\frac{4\omega^2C^2R-i\omega C}{4\omega CR-1-8i\omega CR}
+\end{equation}
+\begin{equation}
+	J_2=iU_{in}C\omega\frac{2i\omega CR+3}{4(i\omega CR)^2+8i\omega CR+1}=U_{in}\frac{2\omega^2C^2R-3i\omega C}{4\omega CR-1-8i\omega CR}
+\end{equation}
+
+Переобозначим $\Omega=\omega CR$
+\begin{equation}
+	J_3-J_2=\frac{U_{in}}{R}\cdot\frac{2\Omega^2 +2i\Omega }{4\Omega-1-8i\Omega}
+\end{equation}
+\begin{equation}
+	U_{out}=2U_{in}
+		\cdot\frac{2\Omega^2+2i\Omega}
+								{4\Omega-1-8i\Omega}+
+			\frac{R}{2i\Omega}\cdot \frac
+			{U_{in}}{R}\frac{4\Omega^2-i\Omega}
+								{4\Omega^2-1-8i\Omega}
+	\end{equation}
+	\begin{equation}
+	U_{out}=
+		U_{in}\cdot\frac{2\Omega^2+2i\Omega}
+								{4\Omega-1-8i\Omega}+
+		\frac{1}{2i}\cdot 
+		U_{in}\frac{4\Omega-i}
+								{4\Omega-1-8i\Omega}		
+	\end{equation}
+
 \end{document}
