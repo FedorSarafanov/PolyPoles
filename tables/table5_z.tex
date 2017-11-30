@@ -1,11 +1,9 @@
 %!TEX root=../polypole.tex
 \begin{table}[H]
-	    \caption{Результаты эксперимента для первой схемы}
+	    \caption{Результаты эксперимента для пятой схемы: $\phi(R)$}
 	    \label{tab:chem1}
 	    \pgfkeys{/pgf/number format/.cd,
 		fixed,  1000 sep={\,}}
-\newlength\Colsep
-\setlength\Colsep{10pt}
 % \xdef\Table{data/i.tsv}
 	     \xdef\C{5e-8}
 \xdef\R{13000}  
@@ -20,7 +18,7 @@
         create col/expr={
         \thisrow{Fr}*2*3.14
         }
-    },	   
+    },	 
     create on use/z/.style={
         create col/expr={
         13000*\thisrow{Uin}/\thisrow{Uout}
@@ -52,7 +50,7 @@
 		% column type/.add={|}{},
 	},
 	columns/Uout/.style={
-		column name={$U_{in}$, В},
+		column name={$U_{out}$, В},
 		precision=3,				
 		% column type/.add={|}{},
 	},
@@ -91,6 +89,6 @@
 	% },	
 	}
 	\centering
-	\pgfplotstabletypeset[]{data/chem1_2.tsv}
+	\pgfplotstabletypeset[]{data/chem4.tsv}
 
 \end{table}

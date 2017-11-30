@@ -4,6 +4,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+\pgfplotsset{compat=1.15}
 \begin{document}
 	\begin{tikzpicture}
 		    \begin{axis}[
@@ -18,17 +19,17 @@
 			% xmax=11,
 			% ymin=0,
 			% ymax=5,
-			xlabel={$R$, кОм},
-			ylabel={$\tan\frac{\phi}{2}$},
+			xlabel={$\omega$, Гц},
+			ylabel={${\phi}$, рад},
 			tick style={very thick},
 		    % scale=0.5,
 		    grid=both,
 		    grid style={line width=1pt, draw=black!20},
 		    major grid style={line width=.5pt,draw=black!90},
-		    % minor y tick num=4,
-		    % minor x tick num=4,   
+		    minor y tick num=4,
+		    minor x tick num=4,   
 		     % xmode=log,
-		    % xmode=log,ymode=normal,
+		    xmode=log,ymode=normal,
 		    % xtick distance=1,
 		    % ytick distance=0.031415,%0.098171875,
 		    % ymax = 1.8,
@@ -46,7 +47,7 @@
 			% yticklabels={$\frac{\pi}{2}$,%
 			% $\frac{\pi}{4}$
 			% 1},			
-		    % xmax = 40,
+		    % xmax = 3000,
 		    % ticklabel style={font=\tiny,fill=white},    
 		    % axis lines=middle, 	
 		    % xlabel style={right, xshift=1em},
@@ -65,7 +66,7 @@
 		[
 		    create on use/diff/.style={
 		        create col/expr={
-		        sqrt(0.1^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^2)+(0.1^2*\thisrow{b}^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^4)))
+		        0.2
 		        }
 		    },	
 		    create on use/omega/.style={
@@ -73,19 +74,19 @@
 		        	\thisrow{Fr}*2*3.1415
 		        }
 		    },			    	
-			x=R, 
-			y=tanphipo, 
-			y error=diff
+			x=omega, 
+			y=phi, 
+			% y error=diff
 		] 
-		{../data/chem5FrEq65.tsv};
+		{../data/chem6.tsv};
 
 
 	        % \addplot +[mark=*, mark size=1.2pt, mark color=red, only marks] plot [error bars/.cd, y dir = both, y explicit] table [x=i, y=d] {../data/11.tsv};
 	        % \addlegendentry{$U_c=-7$ В}
 
 	     \xdef\C{1.5e-8}
-	     \xdef\R{13000}
-	     \addplot [samples=100, domain=1:140, red] {1000*x*\C*65*2*3.14};
+	     \xdef\R{13000}	     
+	     % \addplot [samples=1000, domain=0:20000, red] {rad(atan((x*\R*\C*(5-(x*\R*\C)^2))/(1-6(x*\R*\C)^2)))};
 	     % \addplot [samples=100, domain=0:10, blue] {-x*0.002315};
 
 	     % \addplot [samples=100, domain=0:10, red] {-x*0.01/1.77};

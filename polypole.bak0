@@ -1,5 +1,4 @@
 \input{text/diss}
-\usepackage{setspace}
 
 \begin{document}
 
@@ -13,92 +12,91 @@
 \renewcommand{\phi}{\varphi}
 \renewcommand{\kappa}{\varkappa}
 \renewcommand{\hat}{\widehat}
+
 \input{text/titlepage}
-\begin{spacing}{1}
+
 \tableofcontents
-\end{spacing}
-% \setstretch{1.2}
 \newpage
- 
+
 \section{Расчет цепей}
 \subsection{Расчет импеданса некоторых линейных элементов}
 
-Будем рассчитывать импеданс методом комплексных амплитуд.
-Полагая известным
-\begin{equation}
-	\hat{U}=
-	U_0 e^{i(\omega t+\phi_u)}=
-	U_0\exp(i\phi_u)\exp(i\omega t)=
-	\hat{U}_0\exp(i\omega t)
-\end{equation}
-где	$\hat{U}_0=U_0\exp(i\phi_u)$ -- комплексная амплитуд напряжения, включающая в себя начальную фазу.
+	Будем рассчитывать импеданс методом комплексных амплитуд.
+	Полагая известным
+	\begin{equation}
+		\hat{U}=
+		U_0 e^{i(\omega t+\phi_u)}=
+		U_0\exp(i\phi_u)\exp(i\omega t)=
+		\hat{U}_0\exp(i\omega t)
+	\end{equation}
+	где	$\hat{U}_0=U_0\exp(i\phi_u)$ -- комплексная амплитуд напряжения, включающая в себя начальную фазу.
+	
+	Будем предполагать, что мы нашли $\hat{J}=\hat{J}(\hat{U})$, используя связь тока и напряжения:
+	\begin{equation}
+		\hat{J}=\hat{J}_0\exp(i\omega t)
+	\end{equation}	
 
-Будем предполагать, что мы нашли $\hat{J}=\hat{J}(\hat{U})$, используя связь тока и напряжения:
-\begin{equation}
-	\hat{J}=\hat{J}_0\exp(i\omega t)
-\end{equation}
+	Возможен обратный ход -- от известного тока через линейную связь перейти к напряжению.
 
-Возможен обратный ход -- от известного тока через линейную связь перейти к напряжению.
-
-Тогда импеданс по определению найдется как
-\begin{equation}
-	\hat{z}=\frac{\hat{U}_0}{\hat{J}_0}
-\end{equation}
+	Тогда импеданс по определению найдется как
+	\begin{equation}
+		\hat{z}=\frac{\hat{U}_0}{\hat{J}_0}
+	\end{equation}
 \subsubsection{Импеданс конденсатора}
-Рассчитаем импеданс конденсатора методом комплексных амплитуд.
-\begin{equation}
-	\hat{J}=C\diff{\hat{U}}{t}
-\end{equation}
-Отсюда получаем:
-\begin{equation}
-	\hat{J}=i\omega C U_0\exp(i\phi_u)\exp(i\omega t)
-\end{equation}
-И комплексная амплитуда тока:
-\begin{equation}
-	\hat{J}_0=i\omega C U_0\exp(i\phi_u)
-\end{equation}
-Получаем комплексный импеданс конденсатора
-\begin{equation}
-	\hat{z}_C=\frac{\hat{U}_0}{\hat{J}_0}=\frac{U_0\exp(i\phi_u)}{U_0i\omega C \exp(i\phi_u)}=\frac{1}{i\cdot\omega C}
-\end{equation}
+	Рассчитаем импеданс конденсатора методом комплексных амплитуд.
+	\begin{equation}
+		\hat{J}=C\diff{\hat{U}}{t}
+	\end{equation}
+	Отсюда получаем:
+	\begin{equation}
+		\hat{J}=i\omega C U_0\exp(i\phi_u)\exp(i\omega t)
+	\end{equation}
+	И комплексная амплитуда тока:
+	\begin{equation}
+		\hat{J}_0=i\omega C U_0\exp(i\phi_u)
+	\end{equation}
+	Получаем комплексный импеданс конденсатора
+	\begin{equation}
+		\hat{z}_C=\frac{\hat{U}_0}{\hat{J}_0}=\frac{U_0\exp(i\phi_u)}{U_0i\omega C \exp(i\phi_u)}=\frac{1}{i\cdot\omega C}
+	\end{equation}
 
-\subsubsection{Импеданс индуктивности}
+\subsubsection{Импеданс индуктивности}	
 
-В данном случае удобно считать известным ток.
-\begin{equation}
-	\hat{U}=L\diff{\hat{J}}{t}
-\end{equation}
-Отсюда получаем:
-\begin{equation}
-	\hat{U}=i\omega L J_0\exp(i\phi_j)\exp(i\omega t)
-\end{equation}
-И комплексная амплитуда напряжения:
-\begin{equation}
-	\hat{U}_0=i\omega L J_0\exp(i\phi_j)
-\end{equation}
-Получаем комплексный импеданс конденсатора
-\begin{equation}
-	\hat{z}_L=\frac{\hat{U}_0}{\hat{J}_0}=\frac{i\omega L J_0\exp(i\phi_j)}{J_0\exp(i\phi_j)}=i\cdot \omega L
-\end{equation}
+	В данном случае удобно считать известным ток.
+	\begin{equation}
+		\hat{U}=L\diff{\hat{J}}{t}
+	\end{equation}
+	Отсюда получаем:
+	\begin{equation}
+		\hat{U}=i\omega L J_0\exp(i\phi_j)\exp(i\omega t)
+	\end{equation}
+	И комплексная амплитуда напряжения:
+	\begin{equation}
+		\hat{U}_0=i\omega L J_0\exp(i\phi_j)
+	\end{equation}
+	Получаем комплексный импеданс конденсатора
+	\begin{equation}
+		\hat{z}_L=\frac{\hat{U}_0}{\hat{J}_0}=\frac{i\omega L J_0\exp(i\phi_j)}{J_0\exp(i\phi_j)}=i\cdot \omega L
+	\end{equation}
 
-\subsubsection{Импеданс резистора}
+\subsubsection{Импеданс резистора}	
 
-Пусть известен ток.
-\begin{equation}
-	\hat{U}=\hat{J}R
-\end{equation}
-Отсюда получаем:
-\begin{equation}
-	\hat{U}=R J_0\exp(i\phi_j)\exp(i\omega t)
-\end{equation}
-И комплексная амплитуда напряжения:
-\begin{equation}
-	\hat{U}_0=R J_0\exp(i\phi_j)
-\end{equation}
-Получаем комплексный импеданс конденсатора
-\begin{equation}
-	\hat{z}_R=\frac{\hat{U}_0}{\hat{J}_0}=\frac{R J_0\exp(i\phi_j)}{J_0\exp(i\phi_j)}=R
-\end{equation}
+	Пусть известен ток. 
+	\begin{equation}
+		\hat{U}=\hat{J}R
+	\end{equation}
+	Отсюда получаем:
+	\begin{equation}
+		\hat{U}=R J_0\exp(i\phi_j)\exp(i\omega t)
+	\end{equation}
+	И комплексная амплитуда напряжения:
+	\begin{equation}
+		\hat{U}_0=R J_0\exp(i\phi_j)
+	\end{equation}
+	Получаем комплексный импеданс конденсатора
+	\begin{equation}
+		\hat{z}_R=\frac{\hat{U}_0}{\hat{J}_0}=\frac{R J_0\exp(i\phi_j)}{J_0\exp(i\phi_j)}=R
+	\end{equation}
 
 \section{Двухполюсники. Расчет цепи и экспериментальные данные}
 \subsection{Схема №1. Последовательная $RC$ -- цепочка}
@@ -111,19 +109,19 @@
 \end{figure}
 
 \subsubsection{Импеданс}
-
-Импеданс $RC$ -- цепочки найдем, используя ранее вычисленные
+    
+Импеданс $RC$ -- цепочки найдем, используя ранее вычисленные 
 импедансы линейных элементов:
 \begin{equation}
 	\hat{z}=\frac{1}{i\cdot\omega C}+R
 \end{equation}
 \begin{equation}
 	z=\sqrt{
-		\frac{1}{\omega^2 C^2}
+		\frac{1}{\omega^2 C^2}	
 		+R^2
 	}=
 	\sqrt{
-		\frac{1}{\omega^2 C^2}
+		\frac{1}{\omega^2 C^2}	
 		+\frac{R^2\omega^2 C^2}{\omega^2 C^2}
 	}=\frac{\sqrt{1+(\omega RC)^2}}{\omega C}
 \end{equation}
@@ -150,35 +148,34 @@
 		1
 	}{
 		\omega RC
-	}
+	}	
 \end{equation}
 
 \subsubsection{Результаты эксперимента}
 \input{tables/table1_z}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{img/chem1_z}
-	% \caption{Зависимость $z(\omega)$ для последовательной $RC$--цепочки}
+	\includegraphics[width=0.85\textwidth]{img/chem1_z}
+	\caption{Зависимость $z(\omega)$ для последовательной $RC$--цепочки}
 	\label{fig:RC_z}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{img/chem1_phi}
-	% \caption{Зависимость $\tan\phi(\omega)$ для последовательной $RC$--цепочки}
+	\includegraphics[width=0.85\textwidth]{img/chem1_phi} 
+	\caption{Зависимость $\tan\phi(\omega)$ для последовательной $RC$--цепочки}
 	\label{fig:RC_tanphi}
 \end{figure}
 
+
 \subsection{Схема №2. Последовательная $LC$ -- цепочка}
-\vspace{-1em}
 \begin{figure}[H]
 	\centering
 	\includegraphics[]{chems/chem1}
 	\caption{Последовательная $LC$ -- цепочка}
 	\label{fig:LC}
 \end{figure}
-\vspace{-1em}
+
 \subsubsection{Импеданс}
-\vspace{-2em}
 \begin{equation}
 	\hat{z}=i\omega L+R
 \end{equation}
@@ -189,9 +186,7 @@
 \begin{equation}
 	z=\frac{U_\text{вх}}{U_\text{вых}}R
 \end{equation}
-\vspace{-1em}
 \subsubsection{Разность фаз}
-\vspace{-2em}
 \begin{equation}
 	\left|\tan\phi\right| = \left|\frac{\Im\hat{z}}{\Re\hat{z}}\right|=
 	\left|\frac{
@@ -203,7 +198,7 @@
 		\omega L
 	}{
 		R
-	}
+	}	
 \end{equation}
 
 \subsubsection{Результаты эксперимента}
@@ -211,14 +206,14 @@
 \input{tables/table2_z}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{img/chem2_z}
-	% \caption{Зависимость $z(\omega)$ для последовательной $LC$--цепочки}
+	\includegraphics[width=0.85\textwidth]{img/chem2_z}
+	\caption{Зависимость $z(\omega)$ для последовательной $LC$--цепочки}
 	\label{fig:LC_z}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{img/chem2_phi}
-	% \caption{Зависимость $\tan\phi(\omega)$ для последовательной $LC$--цепочки}
+	\includegraphics[width=0.85\textwidth]{img/chem2_phi} 
+	\caption{Зависимость $\tan\phi(\omega)$ для последовательной $LC$--цепочки}
 	\label{fig:LC_tanphi}
 \end{figure}
 
@@ -246,12 +241,12 @@
 \begin{equation}
 	z=\sqrt{\Im^2\hat{z}+\Re^2\hat{z}}=
 	R\sqrt{
-		\left(
-		1+\frac{1}{1+(\omega RC)^2}
-		\right)^2+
-		\left(
-		\frac{\omega C}{1+(\omega RC)^2}
-		\right)^2
+	\left(
+	1+\frac{1}{1+(\omega RC)^2}
+	\right)^2+
+	\left(
+	\frac{\omega C}{1+(\omega RC)^2}
+	\right)^2
 	}
 \end{equation}
 
@@ -272,7 +267,7 @@
 		\omega RC
 	}{
 		2+(\omega RC)^2
-	}
+	}	
 \end{equation}
 Из уравнения видно, что на малых частотах $z\approx 2R$, а при высоких $z\approx R$.
 
@@ -281,14 +276,14 @@
 \input{tables/table3_z}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{img/chem3_z}
-	% \caption{Зависимость $z(\omega)$ для  $R[RC]$--двухполюсника}
+	\includegraphics[width=0.85\textwidth]{img/chem3_z}
+	\caption{Зависимость $z(\omega)$ для  $R[RC]$--двухполюсника}
 	\label{fig:RRC_z}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{img/chem3_phi}
-	% \caption{Зависимость $\tan\phi(\omega)$ для $R[RC]$--двухполюсника}
+	\includegraphics[width=0.85\textwidth]{img/chem3_phi} 
+	\caption{Зависимость $\tan\phi(\omega)$ для $R[RC]$--двухполюсника}
 	\label{fig:RRC_tanphi}
 \end{figure}
 
@@ -323,12 +318,12 @@
 \begin{equation}
 	z=\sqrt{\Im^2\hat{z}+\Re^2\hat{z}}=
 	\frac{1}{\omega^2L^2+R^2}\sqrt{
-		\left(
-		2\omega^2L^2 R+R^3
-		\right)^2+
-		\left(
-		\omega L R^2
-		\right)^2
+	\left(
+	2\omega^2L^2 R+R^3
+	\right)^2+
+	\left(
+	\omega L R^2
+	\right)^2
 	}
 \end{equation}
 При больших частотах можно пренебречь вторым слагаемым под корнем и сопротивлением в суммах, тогда видно, что на таких частотах $z\approx 2R$.
@@ -346,7 +341,7 @@
 		\omega LR
 	}{
 		2\omega^2L^2 +R^2
-	}
+	}	
 \end{equation}
 
 \subsubsection{Результаты эксперимента}
@@ -354,14 +349,14 @@
 \input{tables/table4_z}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{img/chem4_z}
-	% \caption{Зависимость $z(\omega)$ для  $R[RL]$--двухполюсника}
+	\includegraphics[width=0.85\textwidth]{img/chem4_z}
+	\caption{Зависимость $z(\omega)$ для  $R[RL]$--двухполюсника}
 	\label{fig:RRL_z}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{img/chem4_phi}
-	% \caption{Зависимость $\tan\phi(\omega)$ для $R[RL]$--двухполюсника}
+	\includegraphics[width=0.85\textwidth]{img/chem4_phi} 
+	\caption{Зависимость $\tan\phi(\omega)$ для $R[RL]$--двухполюсника}
 	\label{fig:RRL_tanphi}
 \end{figure}
 
@@ -385,7 +380,7 @@
 \begin{equation}
 	\hat{J}_{right}\equiv \hat{J}_{R_2}=\frac{\hat{U}_{in}}{R_2+\frac{1}{i\omega C_2}}
 \end{equation}
-Тогда
+Тогда 
 \begin{equation}
 	\hat{U}_{out}\equiv\hat{U}_{MN}=
 	-\hat{U}_{AM}+\hat{U}_{AN}=
@@ -413,26 +408,26 @@
 \begin{equation}
 	\hat{K}=
 	\left(
-	\frac{\Omega_2^2}{\Omega_2^2+1}-
-	\frac{1}{\Omega_1^2+1}
+		\frac{\Omega_2^2}{\Omega_2^2+1}-
+		\frac{1}{\Omega_1^2+1}
 	\right)+
 	i\left(
-	\frac{\Omega_2}{\Omega_2^2+1}+
-	\frac{\Omega_1}{\Omega_1^2+1}
+		\frac{\Omega_2}{\Omega_2^2+1}+
+		\frac{\Omega_1}{\Omega_1^2+1}
 	\right)
 \end{equation}
 Отсюда
 \begin{equation}
 	K=
 	\sqrt{
-		\left(
+	\left(
 		\frac{\Omega_2^2}{\Omega_2^2+1}-
 		\frac{1}{\Omega_1^2+1}
-		\right)^2+
-		\left(
+	\right)^2+
+	\left(
 		\frac{\Omega_2}{\Omega_2^2+1}+
 		\frac{\Omega_1}{\Omega_1^2+1}
-		\right)^2
+	\right)^2
 	}
 \end{equation}
 При $\Omega_1$=$\Omega_2$ подстановка дает $K\equiv 1$.
@@ -440,13 +435,13 @@
 \subsubsection{Разность фаз}
 \begin{equation}
 	\tan\phi=\left(
-	\frac{\Omega_2}{\Omega_2^2+1}+
-	\frac{\Omega_1}{\Omega_1^2+1}
+		\frac{\Omega_2}{\Omega_2^2+1}+
+		\frac{\Omega_1}{\Omega_1^2+1}
 	\right)
 	\cdot
 	\left(
-	\frac{\Omega_2^2}{\Omega_2^2+1}-
-	\frac{1}{\Omega_1^2+1}
+		\frac{\Omega_2^2}{\Omega_2^2+1}-
+		\frac{1}{\Omega_1^2+1}
 	\right)^{-1}
 \end{equation}
 При $\Omega_1$=$\Omega_2 \equiv \Omega$
@@ -463,7 +458,7 @@
 	\tan\frac{\phi}{2}=\Omega = \omega RC
 \end{equation}
 
-Так как $\arctan\Omega$ может принимать значения только от 0 до $\frac{\pi}2$, то
+Так как $\arctan\Omega$ может принимать значения только от 0 до $\frac{\pi}2$, то 
 \begin{equation}
 	0\leq\phi<\pi
 \end{equation}
@@ -472,14 +467,14 @@
 \input{tables/table5_R}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{img/chem5_phi_R}
+	\includegraphics[width=0.85\textwidth]{img/chem5_phi_R}
 	\caption{Зависимость $\tan\frac\phi2(R)$}
 	\label{fig:phaserot_phi_R}
 \end{figure}
 \input{tables/table5_omega}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{img/chem5_phi_omega}
+	\includegraphics[width=0.85\textwidth]{img/chem5_phi_omega} 
 	\caption{Зависимость $\tan\frac\phi2(\omega)$}
 	\label{fig:phaserot_phi_omega}
 \end{figure}
@@ -489,7 +484,7 @@
 \begin{figure}[H]
 	\centering
 	\includegraphics[]{chems/chem6}
-	\caption{Принципиальная схема четырехполюсника}
+	\caption{Принципиальная схема фазовращателя}
 	\label{fig:ph_rot2}
 \end{figure}
 
@@ -499,28 +494,28 @@
 \begin{gather}
 	\left\{
 	\begin{aligned}
-		J_1\cdot\left(\frac{1}{i\omega C}+R\right)+J_2\cdot\left( -R \right)+J_3\cdot\left(0 \right)=U_{in} \\
-		J_1\cdot\left(-R\right)+J_2\cdot\left( \frac{1}{i\omega C}+2R \right)+J_3\cdot\left(-R \right)=0    \\
+		J_1\cdot\left(\frac{1}{i\omega C}+R\right)+J_2\cdot\left( -R \right)+J_3\cdot\left(0 \right)=U_{in}\\
+		J_1\cdot\left(-R\right)+J_2\cdot\left( \frac{1}{i\omega C}+2R \right)+J_3\cdot\left(-R \right)=0\\
 		J_1\cdot\left(0\right)+J_2\cdot\left( -R \right)+J_3\cdot\left(\frac{1}{i\omega C}+2R \right)=0
 	\end{aligned}
 	\right.
 \end{gather}
 В этом расчете все величины -- комплексные, хотя это явно не указано. Методом Крамера найдем $J_3$:
 \begin{equation}
-	\Delta =\begin{vmatrix}
-		\alpha & -R       & 0        \\
-		-R     & \alpha+R & -R       \\
-		0      & -R       & \alpha+R \\
+\Delta =\begin{vmatrix} 
+		\alpha & -R & 0\\
+		-R & \alpha+R & -R\\
+		0 & -R & \alpha+R\\
 	\end{vmatrix}=
-	\alpha[(\alpha+R)^2-R^2]+R[-R(\alpha+R)]
+\alpha[(\alpha+R)^2-R^2]+R[-R(\alpha+R)]
 \end{equation}
 \begin{equation}
-	\Delta_3 =\begin{vmatrix}
-		\alpha & -R       & U_{in} \\
-		-R     & \alpha+R & 0      \\
-		0      & -R       & 0      \\
+\Delta_3 =\begin{vmatrix} 
+		\alpha & -R & U_{in}\\
+		-R & \alpha+R & 0\\
+		0 & -R & 0\\
 	\end{vmatrix}=
-	R^2U_{in}
+R^2U_{in}
 \end{equation}
 Здесь $\alpha=\cfrac{1}{i\omega C}+R$. Тогда
 \begin{multline}
@@ -539,7 +534,7 @@
 	5R\frac{1}{\omega^2C^2}
 	-6R^2\frac{1}{i\omega C}
 	-R^3
-	-\frac{i}{\omega^3 C^3}
+	-\frac{i}{\omega^3 C^3}	
 \end{multline}
 \begin{equation}
 	\Delta=
@@ -551,7 +546,7 @@
 	\left(
 	\frac{1}{\omega^3C^3}
 	-\frac{6R^2}{\omega C}
-	\right)
+	\right)	
 \end{equation}
 Или поделив на $R^3$ и обозначив $\Omega=\omega RC$
 \begin{equation}
@@ -576,37 +571,37 @@
 	|K|=\frac{1}{|a+ib|}=\frac{1}{\sqrt{a^2+b^2}}
 	=
 	\cfrac{1}{
-		\sqrt{
-			\left(
-			1
-			-\cfrac{5}{\Omega^2}
-			\right)^2
-			+
-			\left(
-			\cfrac{1}{\Omega^3}
-			-\cfrac{6}{\Omega}
-			\right)^2
-		}}
+	\sqrt{
+	\left(
+		1
+		-\cfrac{5}{\Omega^2}
+	\right)^2
+	+
+	\left(
+		\cfrac{1}{\Omega^3}
+		-\cfrac{6}{\Omega}
+	\right)^2	
+	}}
 \end{equation}
 Упростим, домножив на $\Omega^3$ числитель и знаменатель:
 \begin{equation}
 	|K|=
 	\cfrac{\Omega^3}{
-		\sqrt{
-			\Omega^2\left(
-			5-\Omega^2
-			\right)^2
-			+
-			\left(
-			1
-			-{6}{\Omega}^2
-			\right)^2
-		}}
+	\sqrt{
+	\Omega^2\left(
+		5-\Omega^2
+	\right)^2
+	+
+	\left(
+		1
+		-{6}{\Omega}^2
+	\right)^2	
+	}}
 \end{equation}
 Из (\ref{eq:imre}), очевидно,
 \begin{equation}
 	\tan\phi=-\frac{b}{a}=-\frac{1-6\Omega^2}{\Omega(5-\Omega^2)}
-	\quad\Rightarrow\quad
+\quad\Rightarrow\quad
 	\ctg\phi=-\frac{\Omega(5-\Omega^2)}{1-6\Omega^2}
 \end{equation}
 \begin{equation}
@@ -648,7 +643,7 @@
 % \end{figure}
 
 \subsubsection{Расчет импеданса входа}
-
+    
 \begin{equation}
 	z=\frac{1}{i\omega C}+
 	\cfrac{1}{
@@ -657,125 +652,121 @@
 			\cfrac{1}{i\omega C}+
 			\cfrac{1}{
 				\frac{1}{R}+
-				\cfrac{1}{
-					R+
 					\cfrac{1}{
-						i\omega C
+						R+
+						\cfrac{1}{
+							i\omega C				
+						}
 					}
 				}
-			}
-		}
-	}=
-	\frac{1}{i\omega C}+
+			}		
+			}=
+\frac{1}{i\omega C}+
 	\cfrac{1}{
 		\cfrac{1}{R}+
 		\cfrac{1}{
 			\cfrac{1}{i\omega C}+
 			\cfrac{1}{
 				\frac{1}{R}+
-				\cfrac{i\omega C}{i\Omega+1}
+					\cfrac{i\omega C}{i\Omega+1}
+				}
+			}		
 			}
-		}
-	}
 \end{equation}
 \begin{gather}
-	=
-	\frac{1}{i\omega C}+
+=
+\frac{1}{i\omega C}+
 	\cfrac{1}{
 		\cfrac{1}{R}+
 		\cfrac{1}{
 			\cfrac{1}{i\omega C}+
-			\cfrac{R(i\Omega+1)}{2i\Omega+1}
-		}
+			\cfrac{R(i\Omega+1)}{2i\Omega+1}	
+		}	
 	}
-	=\\=
-	\frac{1}{i\omega C}+
+=\\=
+\frac{1}{i\omega C}+
 	\cfrac{1}{
-		\cfrac{1}{R}+
-		\cfrac{i\omega C - 2\Omega \omega C}{3i\Omega-\Omega^2}
+		\cfrac{1}{R}+		
+			\cfrac{i\omega C - 2\Omega \omega C}{3i\Omega-\Omega^2}
 	}
-	=\\=
-	\frac{1}{i\omega C}+
+=\\=
+\frac{1}{i\omega C}+
 	\cfrac{1}{
-		\cfrac{3i\Omega-\Omega^2}{...}+
-		\cfrac{i\Omega - 2\Omega^2}{R(3i\Omega-\Omega^2)}
+		\cfrac{3i\Omega-\Omega^2}{...}+		
+			\cfrac{i\Omega - 2\Omega^2}{R(3i\Omega-\Omega^2)}
 	}
-	=\\=
-	\frac{1}{i\omega C}+
-	\cfrac{R(3i\Omega-\Omega^2)}{4i\Omega - 3\Omega^2}
-	=\\=
-	\frac{4i\Omega - 3\Omega^2}{...}+
-	\cfrac{i\Omega(3i\Omega-\Omega^2)}{-4\Omega\omega C - 3i\Omega^2\omega C}
-	=\\=
-	\frac{4i\Omega - 3\Omega^2}{...}+
-	\cfrac{-3\Omega^2-i\Omega^3}{-4\Omega\omega C - 3i\Omega^2\omega C}
-	=\\=
-	R\frac{
-		i\Omega^3
-		+6\Omega^2
-		-4i\Omega
-	}{
-		4\Omega^2
-		+3i\Omega^3
-	}
-	=\\=
-	R\frac{
-		(i\Omega^3
-		+6\Omega^2
-		-4i\Omega )
-		(
-		4\Omega^2
-		-3i\Omega^3
-		)
-	}{
-		16\Omega^4
-		+9\Omega^6
-	}
-	=R\frac{
-		-16 i \Omega^3 + 12 \Omega^4 - 14 i \Omega^5 + 3 \Omega^6
-	}{
-		16\Omega^4
-		+9\Omega^6
-	}
-	=\\=
-	\left(
-	R
+=\\=
+\frac{1}{i\omega C}+
+\cfrac{R(3i\Omega-\Omega^2)}{4i\Omega - 3\Omega^2}
+=\\=
+\frac{4i\Omega - 3\Omega^2}{...}+
+\cfrac{i\Omega(3i\Omega-\Omega^2)}{-4\Omega\omega C - 3i\Omega^2\omega C}
+=\\=
+\frac{4i\Omega - 3\Omega^2}{...}+
+\cfrac{-3\Omega^2-i\Omega^3}{-4\Omega\omega C - 3i\Omega^2\omega C}
+=\\=
+R\frac{
+	i\Omega^3
+	+6\Omega^2
+	-4i\Omega 
+}{
+	4\Omega^2 
+	+3i\Omega^3
+}
+=\\=
+R\frac{
+	(i\Omega^3
+	+6\Omega^2
+	-4i\Omega )
+	(
+		4\Omega^2 
+		-3i\Omega^3	
+	)
+}{
+	16\Omega^4
+	+9\Omega^6
+}
+=R\frac{
+	-16 i \Omega^3 + 12 \Omega^4 - 14 i \Omega^5 + 3 \Omega^6
+}{
+	16\Omega^4
+	+9\Omega^6
+}
+=\\=
+\left(
+R
 	\frac{
 		12 \Omega^4 + 3 \Omega^6
 	}{
 		16\Omega^4
 		+9\Omega^6
 	}
-	\right)
-	-i
-	\left(
+\right)
+-i
+\left(
 	R\frac{
 		16 \Omega^3 + 14 \Omega^5
 	}{
 		16\Omega^4
 		+9\Omega^6
 	}
-	\right)
+\right)
 \end{gather}
 
 \section{Расчет <<экзотических>> четырехполюсников}
 
 \subsection{Четырехполюсник-фильтр}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[]{chems/pic5}
-	\caption{Принципиальная схема четырехполюсника}
-	\label{fig:ph_ph}
-\end{figure}
-
+\begin{center}
+\input{chems/pic5}
+\end{center}
 
 Сначала рассчитаем импеданс параллельно соединенных RL и RC контуров.
 \begin{equation}
 	\frac{1}{\hat{z_0}}=\frac{1}{\hat{z_1}}+\frac{1}{\hat{z_2}}=\frac{1}{R+i\omega L}+\frac{i\omega C}{iR\omega C+1}
 \end{equation}
 \begin{equation}
-	\frac{1}{\hat{z_0}}=\frac{1-\omega^2 CL+i2R\omega C}{R(1-\omega^2 LC)+i\omega(R^2C+L)}
+\frac{1}{\hat{z_0}}=\frac{1-\omega^2 CL+i2R\omega C}{R(1-\omega^2 LC)+i\omega(R^2C+L)}
 \end{equation}
 Учитывая то, что $L=\kappa R$ и $C=\frac{\kappa}{R}$ получим
 \begin{equation}
@@ -785,80 +776,72 @@
 \begin{equation}
 	\hat{z_0}=R
 \end{equation}
-Получается, что данная цепь ни что иное как потенциометр.
+Получается, что данная цепь ни что иное как потенциометр. 
 \begin{equation}
 	K_U=\frac{R}{R+R}=\frac{1}{2}
 \end{equation}
 
 
 \subsection{Двойной Т-мост -- узкополосный заграждающий фильтр}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[]{chems/pic6}
-	\caption{Принципиальная схема четырехполюсника}
-	\label{fig:ph_f}
-\end{figure}
-
-\subsubsection{Эквивалентная схема}
-    
+\begin{center}
+\input{chems/pic6}
+\end{center}
 Перейдём к эквивалентной схеме:
-\begin{figure}[H]
-	\centering
-	\includegraphics[]{chems/pic6a}
-	\label{fig:ph_fa}
-\end{figure}
+\begin{center}
+\input{chems/pic6a}
+\end{center}
 
 \begin{gather}
-	U_{out}=U_{2R}+U_{2C}\\
-	U_{2R}=(J_3-J_2)\cdot 2R\\
-	U_{2C}=J_3\cdot\frac{1}{2i\omega C}
+U_{out}=U_{2R}+U_{2C}\\
+U_{2R}=(J_3-J_2)\cdot 2R\\
+U_{2C}=J_3\cdot\frac{1}{2i\omega C}
 \end{gather}
+ 
 
 Все величины подразумеваются комплексными.
 
-Методом контурных токов составим систему уравнений:
+ Методом контурных токов составим систему уравнений:
 \begin{gather}
 	\left\{
 	\begin{aligned}
-		J_1\cdot\left(\frac{1}{i\omega C}+R\right)+J_2\cdot\left( -\frac{1}{i\omega C} \right)+J_3\cdot\left(R \right)=U_{in}                  \\
-		J_1\cdot\left(-\frac{1}{i\omega C}\right)+J_2\cdot\left(4R+\frac{2}{i\omega C} \right)+J_3\cdot\left(-2R-\frac{1}{i\omega C} \right)=0 \\
+		J_1\cdot\left(\frac{1}{i\omega C}+R\right)+J_2\cdot\left( -\frac{1}{i\omega C} \right)+J_3\cdot\left(R \right)=U_{in}\\
+		J_1\cdot\left(-\frac{1}{i\omega C}\right)+J_2\cdot\left(4R+\frac{2}{i\omega C} \right)+J_3\cdot\left(-2R-\frac{1}{i\omega C} \right)=0\\
 		J_1\cdot\left(-R\right)+J_2\cdot\left( -2R-\frac{1}{i\omega C} \right)+J_3\cdot\left(\frac{3}{2i\omega C}+3R \right)=0
 	\end{aligned}
 	\right.
 \end{gather}
 Решим её методом Крамера:
 \begin{equation}
-	\Delta =\begin{vmatrix}
-		R+\frac{1}{i\omega C} & -\frac{1}{i\omega C}    & -R                       \\
-		-\frac{1}{i\omega C}  & 4R+\frac{2}{i\omega C}  & -2R-\frac{1}{i\omega C}  \\
-		-R                    & -\frac{1}{i\omega C}-2R & 3R+\frac{3}{2i\omega C}\
+	\Delta =\begin{vmatrix} 
+		R+\frac{1}{i\omega C} & -\frac{1}{i\omega C} & -R\\
+		-\frac{1}{i\omega C} & 4R+\frac{2}{i\omega C} & -2R-\frac{1}{i\omega C}\\
+		-R & -\frac{1}{i\omega C}-2R & 3R+\frac{3}{2i\omega C}\
 	\end{vmatrix}=
-	\frac{(2i\omega CR+1)[4(i\omega CR)^2+8(i\omega CR)+1]}{2(i\omega C)^3}
+\frac{(2i\omega CR+1)[4(i\omega CR)^2+8(i\omega CR)+1]}{2(i\omega C)^3}
 \end{equation}
 \begin{equation}
-	\Delta_{J_1} =\begin{vmatrix}
-		U_{in} & -\frac{1}{i\omega C}    & -R                       \\
-		0      & 4R+\frac{2}{i\omega C}  & -2R-\frac{1}{i\omega C}  \\
-		0      & -\frac{1}{i\omega C}-2R & 3R+\frac{3}{2i\omega C}\
+	\Delta_{J_1} =\begin{vmatrix} 
+		U_{in} & -\frac{1}{i\omega C} & -R\\
+		0 & 4R+\frac{2}{i\omega C} & -2R-\frac{1}{i\omega C}\\
+		0 & -\frac{1}{i\omega C}-2R & 3R+\frac{3}{2i\omega C}\
 	\end{vmatrix}=
-	\frac{2U_{in}(2i\omega CR+1)^2}{(i\omega C)^2}
+\frac{2U_{in}(2i\omega CR+1)^2}{(i\omega C)^2}	
 \end{equation}
 \begin{equation}
-	\Delta_{J_2} =\begin{vmatrix}
-		R+\frac{1}{i\omega C} & U_{in} & -R                       \\
-		-\frac{1}{i\omega C}  & 0      & -2R-\frac{1}{i\omega C}  \\
-		-R                    & 0      & 3R+\frac{3}{2i\omega C}\
+	\Delta_{J_2} =\begin{vmatrix} 
+		R+\frac{1}{i\omega C} & U_{in} & -R\\
+		-\frac{1}{i\omega C} & 0 & -2R-\frac{1}{i\omega C}\\
+		-R & 0 & 3R+\frac{3}{2i\omega C}\
 	\end{vmatrix}=
-	\frac{U_{in}(2i\omega CR+1)(2i\omega CR+3)}{(i\omega C)^2}
+		\frac{U_{in}(2i\omega CR+1)(2i\omega CR+3)}{(i\omega C)^2}	
 \end{equation}
 \begin{equation}
-	\Delta_{J_3} =\begin{vmatrix}
-		R+\frac{1}{i\omega C} & -\frac{1}{i\omega C}    & U_{in} \\
-		-\frac{1}{i\omega C}  & 4R+\frac{2}{i\omega C}  & 0      \\
-		-R                    & -\frac{1}{i\omega C}-2R & 0\
+	\Delta_{J_3} =\begin{vmatrix} 
+		R+\frac{1}{i\omega C} & -\frac{1}{i\omega C} & U_{in}\\
+		-\frac{1}{i\omega C} & 4R+\frac{2}{i\omega C} & 0\\
+		-R & -\frac{1}{i\omega C}-2R & 0\
 	\end{vmatrix}=
-	\frac{U_{in}(2i\omega CR+1)^2}{(i\omega C)^2}
+	\frac{U_{in}(2i\omega CR+1)^2}{(i\omega C)^2}	
 \end{equation}
 Переобозначим $\Omega=\omega CR$. Теперь нетрудно найти $J_1$, $J_2$ и $J_3$:
 \begin{equation}
@@ -873,13 +856,13 @@
 
 \begin{equation}
 	U_{out}=(J_3-J_2)2R+J_3\frac{R}{2i\Omega}=2U_{in}
-	\cdot\frac{2\Omega^2+i\Omega}
-	{4\Omega^2-1-8i\Omega}+
-	\frac{R}{2i\Omega}\cdot \frac
-	{U_{in}}{R}\frac{4\Omega^2-i\Omega}
-	{4\Omega^2-1-8i\Omega}
+		\cdot\frac{2\Omega^2+i\Omega}
+								{4\Omega^2-1-8i\Omega}+
+			\frac{R}{2i\Omega}\cdot \frac
+			{U_{in}}{R}\frac{4\Omega^2-i\Omega}
+								{4\Omega^2-1-8i\Omega}
 \end{equation}
-Выходное напряжение выразится как
+Отсюда выходное напряжение выразится как
 \begin{equation}
 	U_{out}=\frac{U_{in}}{1+i\frac{8\Omega}{1-4\Omega^2}}
 \end{equation}
@@ -887,39 +870,29 @@
 \begin{equation}
 	K=\frac{1}{1+i\frac{8\Omega}{1-4\Omega^2}}
 \end{equation}
-\subsubsection{Амплитудная характеристика}
 \begin{equation}
 	|K|=\cfrac{1}{\sqrt{1+\cfrac{(8\Omega)^2}{(1-4\Omega^2)^2}}}=\cfrac{|1-4\Omega^2|}{\sqrt{(1-4\Omega^2)^2+64\Omega^2}}
 \end{equation}
-\subsubsection{Фазовая характеристика}
 \begin{equation}
 	\tg{\phi}=\frac{8\Omega}{1-4\Omega^2}
-\end{equation}
-
+\end{equation} 
 \begin{figure}[H]
-	\begin{minipage}[h]{0.49\linewidth}
-		\center{\includegraphics[width=1.1\linewidth]{img/ris6.pdf} \\ а)}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[h]{0.49\linewidth}
-		\center{\includegraphics[width=1.1\linewidth]{img/ris6_phi.pdf} \\ б)}
-	\end{minipage}
-	\caption{Амплитудная характеристика фильтра (a) и фазовая (б)}
-	\label{ris:ris6}
+	\centering
+	\includegraphics[width=0.4\textwidth]{img/ris6.pdf}
+	\caption{Амплитудная характеристика фильтра}
+	\label{fig:res6}
 \end{figure}
 
-\section{Заключение}
-В данной работе мы изучили некоторые линейные двухполюсники и четырёхполюсники.
- 
-Были вычислены и измерены импеданс и разность фаз для $RC$, $LC$, $R[RC]$, $R[RL]$ двухполюсников.
- 
-
-Также были исследованы простейший мостовой фазовращатель и фильтр высоких частот.
-
-Для каждой из них был вычислен коэффициент передачи напряжения и разность фаз (амплитудная и фазовая характеристики). 
- 
-Сравнение теоретических и практических графиков зависимости $z(\omega)$, $\phi(\omega)$ и $K(\omega)$
-показало, \sout{что всё совсем плохо} что с учётом погрешности, теория совпадает с практикой.
-
+\begin{figure}[h]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=0.5\linewidth]{image} \\ а)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=0.5\linewidth]{image} \\ б)}
+\end{minipage}
+\caption{Зависимость сигнала от шума для данных.}
+\label{ris:image1}
+\end{figure}
 
 \end{document}

@@ -1,11 +1,9 @@
 %!TEX root=../polypole.tex
 \begin{table}[H]
-	    \caption{Результаты эксперимента для первой схемы}
+	    \caption{Результаты эксперимента для пятой схемы: $\phi(R)$}
 	    \label{tab:chem1}
 	    \pgfkeys{/pgf/number format/.cd,
 		fixed,  1000 sep={\,}}
-\newlength\Colsep
-\setlength\Colsep{10pt}
 % \xdef\Table{data/i.tsv}
 	     \xdef\C{5e-8}
 \xdef\R{13000}  
@@ -20,7 +18,7 @@
         create col/expr={
         \thisrow{Fr}*2*3.14
         }
-    },	   
+    },	 
     create on use/z/.style={
         create col/expr={
         13000*\thisrow{Uin}/\thisrow{Uout}
@@ -32,6 +30,10 @@
 	},	
 	columns/Fr/.style={
 		column name={$\nu$, Гц},
+		precision=0,		
+	},		
+	columns/R/.style={
+		column name={$R$, кОм},
 		precision=0,		
 	},		
 	columns/omega/.style={
@@ -52,7 +54,7 @@
 		% column type/.add={|}{},
 	},
 	columns/Uout/.style={
-		column name={$U_{in}$, В},
+		column name={$U_{out}$, В},
 		precision=3,				
 		% column type/.add={|}{},
 	},
@@ -66,11 +68,16 @@
 		precision=2,				
 		% column type/.add={|}{},
 	},	
+	columns/tanphipo/.style={
+		column name={$\tan\frac\phi2$},
+		precision=3,				
+		% column type/.add={|}{},
+	},	
 	columns/tanphi/.style={
 		column name={$\tan\phi$},
 		precision=3,				
 		% column type/.add={|}{},
-	},		
+	},				
 	empty cells with={\textbf{--}},
 	every head row/.style={
 	before row={\toprule},
@@ -79,7 +86,7 @@
 		},
 	every last row/.style={after row=\bottomrule},
 	every row/.style={after row=\midrule}, 
-	columns={Fr,omega,a,b,phi,tanphi,Uin,Uout,z},		
+	columns={R,a,b,phi,tanphi,tanphipo},		
 	% dec zerofill
 	% fixed,fixed zerofill,
 	% precision=3
@@ -91,6 +98,6 @@
 	% },	
 	}
 	\centering
-	\pgfplotstabletypeset[]{data/chem1_2.tsv}
+	\pgfplotstabletypeset[]{data/chem5FrEq65.tsv}
 
 \end{table}

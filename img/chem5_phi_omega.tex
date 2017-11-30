@@ -18,15 +18,15 @@
 			% xmax=11,
 			% ymin=0,
 			% ymax=5,
-			xlabel={$R$, кОм},
+			xlabel={$\omega$, Гц},
 			ylabel={$\tan\frac{\phi}{2}$},
 			tick style={very thick},
 		    % scale=0.5,
 		    grid=both,
 		    grid style={line width=1pt, draw=black!20},
 		    major grid style={line width=.5pt,draw=black!90},
-		    % minor y tick num=4,
-		    % minor x tick num=4,   
+		    minor y tick num=4,
+		    minor x tick num=4,   
 		     % xmode=log,
 		    % xmode=log,ymode=normal,
 		    % xtick distance=1,
@@ -46,7 +46,7 @@
 			% yticklabels={$\frac{\pi}{2}$,%
 			% $\frac{\pi}{4}$
 			% 1},			
-		    % xmax = 40,
+		    xmax = 3000,
 		    % ticklabel style={font=\tiny,fill=white},    
 		    % axis lines=middle, 	
 		    % xlabel style={right, xshift=1em},
@@ -65,7 +65,7 @@
 		[
 		    create on use/diff/.style={
 		        create col/expr={
-		        sqrt(0.1^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^2)+(0.1^2*\thisrow{b}^2/((1-(\thisrow{a}^2/\thisrow{b}^2))*\thisrow{b}^4)))
+		        0.2
 		        }
 		    },	
 		    create on use/omega/.style={
@@ -73,11 +73,11 @@
 		        	\thisrow{Fr}*2*3.1415
 		        }
 		    },			    	
-			x=R, 
+			x=omega, 
 			y=tanphipo, 
 			y error=diff
 		] 
-		{../data/chem5FrEq65.tsv};
+		{../data/chem5Req140.tsv};
 
 
 	        % \addplot +[mark=*, mark size=1.2pt, mark color=red, only marks] plot [error bars/.cd, y dir = both, y explicit] table [x=i, y=d] {../data/11.tsv};
@@ -85,7 +85,7 @@
 
 	     \xdef\C{1.5e-8}
 	     \xdef\R{13000}
-	     \addplot [samples=100, domain=1:140, red] {1000*x*\C*65*2*3.14};
+	     \addplot [samples=100, domain=1:7000, red] {140000*x*1.5e-8};
 	     % \addplot [samples=100, domain=0:10, blue] {-x*0.002315};
 
 	     % \addplot [samples=100, domain=0:10, red] {-x*0.01/1.77};
